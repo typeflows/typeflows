@@ -1,0 +1,8 @@
+[versions]
+kotlin = "2.2.10"
+version-catalog-update = "1.0.0"
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
+

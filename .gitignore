@@ -1,0 +1,17 @@
+.idea/
+*.iml
+.gradle
+.kotlin
+.http4k
+build/
+.DS_Store
+classes/
+/site/
+out/
+intellij-settings/
+**/*.actual
+.claude
+
+node_modules
+public
+.hugo_build.lock
