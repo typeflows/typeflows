@@ -1,11 +1,11 @@
 [versions]
 kotlin = "2.2.10"
-typeflows-github = "0.0.1.0"
+typeflows = "0.1.0-beta"
 version-catalog-update = "1.0.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-typeflows-github = { id = "io.typeflows.github", version.ref = "typeflows-github" }
+typeflows-github = { id = "io.typeflows.github", version.ref = "typeflows" }
 version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
 
 [libraries]
