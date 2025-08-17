@@ -9,4 +9,4 @@ typeflows-github = { id = "io.typeflows.github", version.ref = "typeflows" }
 version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
 
 [libraries]
-typeflows-github = { module = "io.typeflows:typeflows-github", version.ref = "typeflows-github" }
+typeflows-github = { module = "io.typeflows:typeflows-github", version.ref = "typeflows" }
