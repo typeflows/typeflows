@@ -1,7 +1,10 @@
 plugins {
-    kotlin("jvm") version "2.2.0"
+    alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.version.catalog.update)
-    id("io.typeflows.github") version "0.0.1.0"
+
+    // Typeflows plugin for GitHub
+    alias(libs.plugins.typeflows.github)
+    // or... id("io.typeflows.github") version "VERSION"
 }
 
 repositories {
@@ -9,8 +12,7 @@ repositories {
 }
 
 dependencies {
-    typeflowsApi("io.typeflows:typeflows-github:0.0.1.0")
-}
-
-typeflows {
+    // Add dependencies needed to build your Workflows
+    typeflowsApi(libs.typeflows.github)
+    // or... typeflowsApi("io.typeflows:typeflows-github:VERSION")
 }
