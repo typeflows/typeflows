@@ -21,7 +21,7 @@ class Build : WorkflowBuilder {
     override fun toWorkflow() = Workflow("Build") {
         on += WorkflowDispatch.configure()
 
-        permissions = Permissions.Granular(Contents to Write)
+        permissions = Permissions(Contents to Write)
 
         on += Push {
             branches = Branches.Ignore("develop")

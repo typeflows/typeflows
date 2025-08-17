@@ -16,6 +16,7 @@ jobs:
       with:
         node-version: '20'
     - run: npm run build && npm test
+      shell: bash
   deploy:
     runs-on: ubuntu-latest
     needs:

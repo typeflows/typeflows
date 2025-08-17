@@ -26,6 +26,7 @@ jobs:
       uses: gradle/actions/setup-gradle@v4.4.2
     - name: Build
       run: ./gradlew check --info
+      shell: bash
     - name: Publish Test Report
       uses: mikepenz/action-junit-report@v5.6.2
       if: always()
@@ -43,6 +44,7 @@ jobs:
         echo "tag-created=false" >> $GITHUB_OUTPUT
       env:
         GH_TOKEN: ${{ secrets.WORKFLOWS_TOKEN }}
+      shell: bash
     - name: Trigger release workflow
       uses: peter-evans/repository-dispatch@v3
       if: github.ref == 'refs/heads/main' && steps.get-version.outputs.tag-created
