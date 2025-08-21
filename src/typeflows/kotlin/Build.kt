@@ -1,21 +1,21 @@
 import io.typeflows.github.WorkflowBuilder
-import io.typeflows.github.workflow.Job
-import io.typeflows.github.workflow.Permission.Contents
-import io.typeflows.github.workflow.PermissionLevel.Write
-import io.typeflows.github.workflow.Permissions
-import io.typeflows.github.workflow.RunsOn.Companion.UBUNTU_LATEST
-import io.typeflows.github.workflow.Workflow
-import io.typeflows.github.workflow.steps.MarketplaceAction.Companion.checkout
-import io.typeflows.github.workflow.steps.MarketplaceAction.Companion.setupGradle
-import io.typeflows.github.workflow.steps.MarketplaceAction.Companion.setupJava
-import io.typeflows.github.workflow.steps.RunCommand
-import io.typeflows.github.workflow.steps.RunScript
-import io.typeflows.github.workflow.steps.UseAction
-import io.typeflows.github.workflow.triggers.Branches
-import io.typeflows.github.workflow.triggers.Paths
-import io.typeflows.github.workflow.triggers.PullRequest
-import io.typeflows.github.workflow.triggers.Push
-import io.typeflows.github.workflow.triggers.WorkflowDispatch
+import io.typeflows.github.workflows.Job
+import io.typeflows.github.workflows.Permission.Contents
+import io.typeflows.github.workflows.PermissionLevel.Write
+import io.typeflows.github.workflows.Permissions
+import io.typeflows.github.workflows.RunsOn.Companion.UBUNTU_LATEST
+import io.typeflows.github.workflows.Workflow
+import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.checkout
+import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.setupGradle
+import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.setupJava
+import io.typeflows.github.workflows.steps.RunCommand
+import io.typeflows.github.workflows.steps.RunScript
+import io.typeflows.github.workflows.steps.UseAction
+import io.typeflows.github.workflows.triggers.Branches
+import io.typeflows.github.workflows.triggers.Paths
+import io.typeflows.github.workflows.triggers.PullRequest
+import io.typeflows.github.workflows.triggers.Push
+import io.typeflows.github.workflows.triggers.WorkflowDispatch
 
 class Build : WorkflowBuilder {
     override fun toWorkflow() = Workflow("Build") {
