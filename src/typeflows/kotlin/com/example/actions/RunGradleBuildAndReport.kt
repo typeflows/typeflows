@@ -1,0 +1,26 @@
+package com.example.actions
+
+import io.typeflows.github.actions.ActionBuilder
+import io.typeflows.github.workflows.Action
+import io.typeflows.github.workflows.Input
+import io.typeflows.github.workflows.steps.RunCommand
+import io.typeflows.github.workflows.steps.UseAction
+
+class RunGradleBuildAndReport : ActionBuilder {
+    override fun build() = Action("Run Gradle Build and Report", "Builds from Gradle and reports test results") {
+        inputs += Input.string(
+            "github-token",
+            "GitHub token for authentication with the GitHub API"
+        )
+
+        steps += RunCommand("./gradlew check --info", "Build")
+
+        steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
+            condition = "always()"
+            with["report_paths"] = "**/build/test-results/test/TEST-*.xml"
+            with["github_token"] = $$"${{ inputs.github-token }}"
+            with["check_annotations"] = "true"
+            with["update_check"] = "true"
+        }
+    }
+}

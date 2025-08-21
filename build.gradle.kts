@@ -18,4 +18,5 @@ dependencies {
 }
 
 typeflows {
+    typeflowsClass = "com.example.DotGitHub" // Defaults to "DotGitHub"
 }
