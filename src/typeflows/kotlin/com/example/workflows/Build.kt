@@ -1,13 +1,13 @@
-import io.typeflows.github.WorkflowBuilder
+package com.example.workflows
+
 import io.typeflows.github.workflows.Job
-import io.typeflows.github.workflows.Permission.Contents
-import io.typeflows.github.workflows.PermissionLevel.Write
+import io.typeflows.github.workflows.Permission
+import io.typeflows.github.workflows.PermissionLevel
 import io.typeflows.github.workflows.Permissions
-import io.typeflows.github.workflows.RunsOn.Companion.UBUNTU_LATEST
+import io.typeflows.github.workflows.RunsOn
 import io.typeflows.github.workflows.Workflow
-import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.checkout
-import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.setupGradle
-import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.setupJava
+import io.typeflows.github.workflows.WorkflowBuilder
+import io.typeflows.github.workflows.steps.MarketplaceAction
 import io.typeflows.github.workflows.steps.RunCommand
 import io.typeflows.github.workflows.steps.RunScript
 import io.typeflows.github.workflows.steps.UseAction
@@ -18,33 +18,33 @@ import io.typeflows.github.workflows.triggers.Push
 import io.typeflows.github.workflows.triggers.WorkflowDispatch
 
 class Build : WorkflowBuilder {
-    override fun toWorkflow() = Workflow("Build") {
-        on += WorkflowDispatch.configure()
+    override fun build() = Workflow.Companion("Build") {
+        on += WorkflowDispatch.Companion.configure()
 
-        permissions = Permissions(Contents to Write)
+        permissions = Permissions.Companion(Permission.Contents to PermissionLevel.Write)
 
-        on += Push {
+        on += Push.Companion {
             branches = Branches.Ignore("develop")
             paths = Paths.Ignore("**/.md")
         }
 
-        on += PullRequest {
+        on += PullRequest.Companion {
             paths = Paths.Ignore("**/.md")
         }
 
-        jobs += Job("build", UBUNTU_LATEST) {
-            steps += checkout()
+        jobs += Job.Companion("build", RunsOn.Companion.UBUNTU_LATEST) {
+            steps += MarketplaceAction.Companion.checkout()
 
-            steps += setupJava {
+            steps += MarketplaceAction.Companion.setupJava {
                 with["distribution"] = "adopt"
                 with["java-version"] = "21"
             }
 
-            steps += setupGradle()
+            steps += MarketplaceAction.Companion.setupGradle()
 
-            steps += RunCommand("./gradlew check --info", "Build")
+            steps += RunCommand.Companion("./gradlew check --info", "Build")
 
-            steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
+            steps += UseAction.Companion("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
                 condition = "always()"
                 with["report_paths"] = "**/build/test-results/test/TEST-*.xml"
                 with["github_token"] = $$"${{ secrets.GITHUB_TOKEN }}"
@@ -52,13 +52,13 @@ class Build : WorkflowBuilder {
                 with["update_check"] = "true"
             }
 
-            steps += RunScript("scripts/release-if-required.sh", "Release (if required)") {
+            steps += RunScript.Companion("scripts/release-if-required.sh", "Release (if required)") {
                 id = "get-version"
                 condition = "github.ref == 'refs/heads/main'"
                 env["GH_TOKEN"] = $$"${{ secrets.WORKFLOWS_TOKEN }}"
             }
 
-            steps += UseAction("peter-evans/repository-dispatch@v3", "Trigger release workflow") {
+            steps += UseAction.Companion("peter-evans/repository-dispatch@v3", "Trigger release workflow") {
                 condition = """github.ref == 'refs/heads/main' && steps.get-version.outputs.tag-created == 'true'"""
                 with["token"] = $$"${{ secrets.WORKFLOWS_TOKEN }}"
                 with["event-type"] = "release"

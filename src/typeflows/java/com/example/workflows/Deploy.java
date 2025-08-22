@@ -1,6 +1,8 @@
-import io.typeflows.github.WorkflowBuilder;
+package com.example.workflows;
+
 import io.typeflows.github.workflows.Job;
 import io.typeflows.github.workflows.Workflow;
+import io.typeflows.github.workflows.WorkflowBuilder;
 import io.typeflows.github.workflows.steps.RunCommand;
 import io.typeflows.github.workflows.steps.UseAction;
 import io.typeflows.github.workflows.triggers.Branches;
@@ -15,7 +17,7 @@ public class Deploy implements WorkflowBuilder {
 
     @NotNull
     @Override
-    public Workflow toWorkflow() {
+    public Workflow build() {
         return Workflow.configure("Deploy to Production", workflow -> {
             workflow.on.add(Push.configure(push -> {
                 push.branches = Branches.Only("release");

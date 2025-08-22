@@ -16,3 +16,6 @@ dependencies {
     typeflowsApi(libs.typeflows.github)
     // or... typeflowsApi("io.typeflows:typeflows-github:VERSION")
 }
+
+typeflows {
+}
