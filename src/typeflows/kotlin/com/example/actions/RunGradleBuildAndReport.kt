@@ -1,12 +1,12 @@
 package com.example.actions
 
-import io.typeflows.github.actions.ActionBuilder
 import io.typeflows.github.workflows.Action
 import io.typeflows.github.workflows.Input
 import io.typeflows.github.workflows.steps.RunCommand
 import io.typeflows.github.workflows.steps.UseAction
+import io.typeflows.util.Builder
 
-class RunGradleBuildAndReport : ActionBuilder {
+class RunGradleBuildAndReport : Builder<Action> {
     override fun build() = Action("Run Gradle Build and Report", "Builds from Gradle and reports test results") {
         inputs += Input.string(
             "github-token",

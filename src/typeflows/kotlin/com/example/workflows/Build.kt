@@ -6,8 +6,9 @@ import io.typeflows.github.workflows.PermissionLevel
 import io.typeflows.github.workflows.Permissions
 import io.typeflows.github.workflows.RunsOn
 import io.typeflows.github.workflows.Workflow
-import io.typeflows.github.workflows.WorkflowBuilder
-import io.typeflows.github.workflows.steps.MarketplaceAction
+import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.checkout
+import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.setupGradle
+import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.setupJava
 import io.typeflows.github.workflows.steps.RunCommand
 import io.typeflows.github.workflows.steps.RunScript
 import io.typeflows.github.workflows.steps.UseAction
@@ -16,8 +17,9 @@ import io.typeflows.github.workflows.triggers.Paths
 import io.typeflows.github.workflows.triggers.PullRequest
 import io.typeflows.github.workflows.triggers.Push
 import io.typeflows.github.workflows.triggers.WorkflowDispatch
+import io.typeflows.util.Builder
 
-class Build : WorkflowBuilder {
+class Build : Builder<Workflow> {
     override fun build() = Workflow("Build") {
         on += WorkflowDispatch.configure()
 
@@ -33,14 +35,14 @@ class Build : WorkflowBuilder {
         }
 
         jobs += Job("build", RunsOn.UBUNTU_LATEST) {
-            steps += MarketplaceAction.checkout()
+            steps += checkout()
 
-            steps += MarketplaceAction.setupJava {
+            steps += setupJava {
                 with["distribution"] = "adopt"
                 with["java-version"] = "21"
             }
 
-            steps += MarketplaceAction.setupGradle()
+            steps += setupGradle()
 
             steps += RunCommand("./gradlew check --info", "Build")
 
