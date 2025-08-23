@@ -13,13 +13,13 @@ import io.typeflows.github.dependabot.ScheduleInterval.Monthly
 import io.typeflows.github.dependabot.Update
 
 class DotGitHub : DotGitHubBuilder {
-    override fun build() = DotGitHub.Companion {
+    override fun build() = DotGitHub {
         workflows += Build()
         workflows += Deploy()
 
         actions += RunGradleBuildAndReport()
 
-        files += dependabot(Dependabot.Companion {
+        files += dependabot(Dependabot {
             updates += Update(Maven) {
                 schedule = Schedule(Monthly)
             }

@@ -18,33 +18,33 @@ import io.typeflows.github.workflows.triggers.Push
 import io.typeflows.github.workflows.triggers.WorkflowDispatch
 
 class Build : WorkflowBuilder {
-    override fun build() = Workflow.Companion("Build") {
-        on += WorkflowDispatch.Companion.configure()
+    override fun build() = Workflow("Build") {
+        on += WorkflowDispatch.configure()
 
-        permissions = Permissions.Companion(Permission.Contents to PermissionLevel.Write)
+        permissions = Permissions(Permission.Contents to PermissionLevel.Write)
 
-        on += Push.Companion {
+        on += Push {
             branches = Branches.Ignore("develop")
             paths = Paths.Ignore("**/.md")
         }
 
-        on += PullRequest.Companion {
+        on += PullRequest {
             paths = Paths.Ignore("**/.md")
         }
 
-        jobs += Job.Companion("build", RunsOn.Companion.UBUNTU_LATEST) {
-            steps += MarketplaceAction.Companion.checkout()
+        jobs += Job("build", RunsOn.UBUNTU_LATEST) {
+            steps += MarketplaceAction.checkout()
 
-            steps += MarketplaceAction.Companion.setupJava {
+            steps += MarketplaceAction.setupJava {
                 with["distribution"] = "adopt"
                 with["java-version"] = "21"
             }
 
-            steps += MarketplaceAction.Companion.setupGradle()
+            steps += MarketplaceAction.setupGradle()
 
-            steps += RunCommand.Companion("./gradlew check --info", "Build")
+            steps += RunCommand("./gradlew check --info", "Build")
 
-            steps += UseAction.Companion("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
+            steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
                 condition = "always()"
                 with["report_paths"] = "**/build/test-results/test/TEST-*.xml"
                 with["github_token"] = $$"${{ secrets.GITHUB_TOKEN }}"
@@ -52,13 +52,13 @@ class Build : WorkflowBuilder {
                 with["update_check"] = "true"
             }
 
-            steps += RunScript.Companion("scripts/release-if-required.sh", "Release (if required)") {
+            steps += RunScript("scripts/release-if-required.sh", "Release (if required)") {
                 id = "get-version"
                 condition = "github.ref == 'refs/heads/main'"
                 env["GH_TOKEN"] = $$"${{ secrets.WORKFLOWS_TOKEN }}"
             }
 
-            steps += UseAction.Companion("peter-evans/repository-dispatch@v3", "Trigger release workflow") {
+            steps += UseAction("peter-evans/repository-dispatch@v3", "Trigger release workflow") {
                 condition = """github.ref == 'refs/heads/main' && steps.get-version.outputs.tag-created == 'true'"""
                 with["token"] = $$"${{ secrets.WORKFLOWS_TOKEN }}"
                 with["event-type"] = "release"
