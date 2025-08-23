@@ -4,8 +4,7 @@ This repository contains examples demonstrating how to use the Typeflows librari
 
 ## Overview
 
-Typeflows is a set of libraries that allow you to define workflows using type-safe code instead of YAML or other configuration formats. This examples repository
-showcases various patterns and use cases.
+Typeflows is a set of libraries that allow you to define workflows using type-safe code instead of YAML or other configuration formats. This examples repository showcases various patterns and use cases.
 
 ## Supported Platforms
 
@@ -27,4 +26,4 @@ To generate workflows from the examples into .github/workflows, run the followin
 
 ## License
 
-This project is licensed under the same terms as the main Typeflows project.
+This project is licensed under the same terms as the main Typeflows project. See [https://typeflows.io/license](https://typeflows.io/license) for details.
