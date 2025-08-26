@@ -6,11 +6,13 @@ import io.typeflows.github.workflows.PermissionLevel
 import io.typeflows.github.workflows.Permissions
 import io.typeflows.github.workflows.RunsOn
 import io.typeflows.github.workflows.Workflow
-import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.checkout
-import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.setupGradle
-import io.typeflows.github.workflows.steps.MarketplaceAction.Companion.setupJava
+import io.typeflows.github.workflows.steps.Checkout
+import io.typeflows.github.workflows.steps.JavaDistribution.Adopt
+import io.typeflows.github.workflows.steps.JavaVersion.V21
 import io.typeflows.github.workflows.steps.RunCommand
 import io.typeflows.github.workflows.steps.RunScript
+import io.typeflows.github.workflows.steps.SetupGradle
+import io.typeflows.github.workflows.steps.SetupJava
 import io.typeflows.github.workflows.steps.UseAction
 import io.typeflows.github.workflows.triggers.Branches
 import io.typeflows.github.workflows.triggers.Paths
@@ -35,14 +37,12 @@ class Build : Builder<Workflow> {
         }
 
         jobs += Job("build", RunsOn.UBUNTU_LATEST) {
-            steps += checkout()
+            steps += Checkout()
 
-            steps += setupJava {
-                with["distribution"] = "adopt"
-                with["java-version"] = "21"
-            }
 
-            steps += setupGradle()
+            steps += SetupJava(Adopt, V21)
+
+            steps += SetupGradle()
 
             steps += RunCommand("./gradlew check --info", "Build")
 
