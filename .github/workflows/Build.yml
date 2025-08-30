@@ -48,8 +48,8 @@ jobs:
       shell: bash
     - name: Trigger release workflow
       uses: peter-evans/repository-dispatch@v3
-      if: github.ref == 'refs/heads/main' && steps.get-version.outputs.tag-created
-        == 'true'
+      if: (github.ref == 'refs/heads/main' && steps.get-version.outputs.tag-created
+        == 'true')
       with:
         token: ${{ secrets.WORKFLOWS_TOKEN }}
         event-type: release
