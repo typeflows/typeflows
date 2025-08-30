@@ -3,8 +3,8 @@ plugins {
     alias(libs.plugins.version.catalog.update)
 
     // Typeflows plugin for GitHub
-    alias(libs.plugins.typeflows.github)
-    // or... id("io.typeflows.github") version "VERSION"
+    alias(libs.plugins.typeflows)
+    // or... id("io.typeflows") version "VERSION"
 }
 
 repositories {
@@ -18,5 +18,5 @@ dependencies {
 }
 
 typeflows {
-    typeflowsClass = "com.example.DotGitHub" // Defaults to "DotGitHub"
+    typeflowsClass = "com.example.Typeflows" // Defaults to "Typeflows"
 }

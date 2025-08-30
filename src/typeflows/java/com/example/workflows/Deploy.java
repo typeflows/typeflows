@@ -2,9 +2,9 @@ package com.example.workflows;
 
 import io.typeflows.github.workflows.Job;
 import io.typeflows.github.workflows.Workflow;
-import io.typeflows.github.workflows.steps.Checkout;
 import io.typeflows.github.workflows.steps.RunCommand;
 import io.typeflows.github.workflows.steps.UseAction;
+import io.typeflows.github.workflows.steps.marketplace.Checkout;
 import io.typeflows.github.workflows.triggers.Branches;
 import io.typeflows.github.workflows.triggers.Paths;
 import io.typeflows.github.workflows.triggers.Push;
@@ -12,6 +12,7 @@ import io.typeflows.util.Builder;
 import org.jetbrains.annotations.NotNull;
 
 import static io.typeflows.github.workflows.RunsOn.UBUNTU_LATEST;
+import static io.typeflows.github.workflows.steps.marketplace.Checkout.configure;
 
 public class Deploy implements Builder<Workflow> {
 

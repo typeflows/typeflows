@@ -1,25 +1,29 @@
 package com.example.workflows
 
+import io.typeflows.github.workflows.Conditions.always
 import io.typeflows.github.workflows.Job
 import io.typeflows.github.workflows.Permission
 import io.typeflows.github.workflows.PermissionLevel
 import io.typeflows.github.workflows.Permissions
 import io.typeflows.github.workflows.RunsOn
+import io.typeflows.github.workflows.StrExp
 import io.typeflows.github.workflows.Workflow
-import io.typeflows.github.workflows.steps.Checkout
-import io.typeflows.github.workflows.steps.JavaDistribution.Adopt
-import io.typeflows.github.workflows.steps.JavaVersion.V21
+import io.typeflows.github.workflows.context.GitHub
 import io.typeflows.github.workflows.steps.RunCommand
 import io.typeflows.github.workflows.steps.RunScript
-import io.typeflows.github.workflows.steps.SetupGradle
-import io.typeflows.github.workflows.steps.SetupJava
 import io.typeflows.github.workflows.steps.UseAction
+import io.typeflows.github.workflows.steps.marketplace.Checkout
+import io.typeflows.github.workflows.steps.marketplace.JavaDistribution.Adopt
+import io.typeflows.github.workflows.steps.marketplace.JavaVersion
+import io.typeflows.github.workflows.steps.marketplace.SetupGradle
+import io.typeflows.github.workflows.steps.marketplace.SetupJava
 import io.typeflows.github.workflows.triggers.Branches
 import io.typeflows.github.workflows.triggers.Paths
 import io.typeflows.github.workflows.triggers.PullRequest
 import io.typeflows.github.workflows.triggers.Push
 import io.typeflows.github.workflows.triggers.WorkflowDispatch
 import io.typeflows.util.Builder
+import jdk.internal.org.objectweb.asm.Opcodes.V21
 
 class Build : Builder<Workflow> {
     override fun build() = Workflow("Build") {
@@ -40,14 +44,14 @@ class Build : Builder<Workflow> {
             steps += Checkout()
 
 
-            steps += SetupJava(Adopt, V21)
+            steps += SetupJava(Adopt, JavaVersion.V21)
 
             steps += SetupGradle()
 
             steps += RunCommand("./gradlew check --info", "Build")
 
             steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
-                condition = "always()"
+                condition = always()
                 with["report_paths"] = "**/build/test-results/test/TEST-*.xml"
                 with["github_token"] = $$"${{ secrets.GITHUB_TOKEN }}"
                 with["check_annotations"] = "true"
@@ -56,12 +60,15 @@ class Build : Builder<Workflow> {
 
             steps += RunScript("scripts/release-if-required.sh", "Release (if required)") {
                 id = "get-version"
-                condition = "github.ref == 'refs/heads/main'"
+                condition = GitHub.ref.isEqualTo("refs/heads/main")
                 env["GH_TOKEN"] = $$"${{ secrets.WORKFLOWS_TOKEN }}"
             }
 
             steps += UseAction("peter-evans/repository-dispatch@v3", "Trigger release workflow") {
-                condition = """github.ref == 'refs/heads/main' && steps.get-version.outputs.tag-created == 'true'"""
+
+                condition = GitHub.ref.isEqualTo("refs/heads/main")
+                    .and(StrExp.of("steps.get-version.outputs.tag-created").isEqualTo("true"))
+
                 with["token"] = $$"${{ secrets.WORKFLOWS_TOKEN }}"
                 with["event-type"] = "release"
                 with["client-payload"] = $$"{\"tag\": \"${{ steps.get-version.outputs.tag }}\"}"

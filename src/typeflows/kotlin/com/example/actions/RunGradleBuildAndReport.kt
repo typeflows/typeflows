@@ -1,6 +1,7 @@
 package com.example.actions
 
 import io.typeflows.github.workflows.Action
+import io.typeflows.github.workflows.Conditions.always
 import io.typeflows.github.workflows.Input
 import io.typeflows.github.workflows.steps.RunCommand
 import io.typeflows.github.workflows.steps.UseAction
@@ -16,7 +17,7 @@ class RunGradleBuildAndReport : Builder<Action> {
         steps += RunCommand("./gradlew check --info", "Build")
 
         steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
-            condition = "always()"
+            condition = always()
             with["report_paths"] = "**/build/test-results/test/TEST-*.xml"
             with["github_token"] = $$"${{ inputs.github-token }}"
             with["check_annotations"] = "true"
