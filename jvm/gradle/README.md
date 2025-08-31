@@ -1,4 +1,4 @@
-# JVM Gradle Example
+# Typeflows Gradle Example
 
 This example demonstrates how to use Typeflows with Gradle to manage your entire `.github/` folder as code - workflows, security policies, branch protection, and more - using Kotlin and Java.
 

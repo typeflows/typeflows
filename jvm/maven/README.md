@@ -1,4 +1,4 @@
-# JVM Maven Example
+# Typeflows Maven Example
 
 This example demonstrates how to use Typeflows with Maven to manage your entire `.github/` folder as code - workflows, security policies, branch protection, and more - using Java and Kotlin.
 
