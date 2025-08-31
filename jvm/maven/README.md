@@ -41,7 +41,9 @@ This example shows how to replace manual `.github/` folder management with progr
 
 ## Configuration
 
-The Typeflows and Kotlin Maven plugins are configured in `typeflows/pom.xml`:
+The Typeflows and Kotlin Maven plugins are configured in `typeflows/pom.xml`.
+
+**Important**: Since the Typeflows class is in the `com.example` package, you must specify the fully qualified class name in the plugin configuration:
 
 ```xml
 <!-- Kotlin Maven Plugin -->
@@ -79,13 +81,11 @@ The Typeflows and Kotlin Maven plugins are configured in `typeflows/pom.xml`:
 </plugin>
 ```
 
+**Note**: The `<typeflowsClass>com.example.Typeflows</typeflowsClass>` configuration is required because the class is not in the default (root) package. If your Typeflows class is in the root package (just `Typeflows`), you can omit this configuration.
+
 ## Running the Example
 
 1. Navigate to the maven directory: `cd jvm/maven`
 2. Navigate to the typeflows module: `cd typeflows`
 3. Run the export: `mvn typeflows:export`
 4. Check the generated `.github/` folder in the maven directory
-
-## License
-
-This example is licensed under the same terms as the main Typeflows project. See [https://typeflows.io/license](https://typeflows.io/license) for details.

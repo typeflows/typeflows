@@ -16,25 +16,48 @@ To generate the complete `.github/` configuration from this example, run:
 
 ## Project Structure
 
-- `src/typeflows/kotlin/` - Kotlin GitHub configuration definitions
-- `src/typeflows/java/` - Java GitHub configuration definitions  
+- `src/typeflows/kotlin/com/example/Typeflows.kt` - Main configuration class
+- `src/typeflows/kotlin/com/example/actions/RunGradleBuildAndReport.kt` - Custom Gradle build action
+- `src/typeflows/kotlin/com/example/workflows/Build.kt` - Build workflow definition
+- `src/typeflows/java/com/example/workflows/Deploy.java` - Deploy workflow (Java example)
 - `src/typeflows/resources/` - Resource files including instructions and scripts
 
 ## What This Example Includes
 
-- **Build Workflow** (`Build.kt`) - Demonstrates a basic CI/CD workflow
-- **Deploy Workflow** (`Deploy.java`) - Shows deployment workflow patterns  
-- **Custom Actions** (`RunGradleBuildAndReport.kt`) - Example of creating reusable actions
+- **Custom Gradle Actions** - RunGradleBuildAndReport action tailored for Gradle projects
+- **Workflow Definitions** - Build and Deploy workflows with Gradle-specific commands
+- **Dependabot Configuration** - Automated dependency updates (currently configured for Maven, can be changed to Gradle)
+- **Gradle Plugin Integration** - Example of the Typeflows Gradle plugin configuration
+- **Kotlin & Java Support** - Mixed language support with proper Gradle compilation
 - **Resource Files** - Instructions and scripts that can be referenced in your GitHub configuration
 
 This example shows how to replace manual `.github/` folder management with programmable, testable, and shareable code. Stop copy-pasting configurations between repositories and start treating your GitHub setup as infrastructure!
 
 ## Configuration
 
-The Typeflows plugin is configured in `build.gradle.kts`:
+The Typeflows plugin is configured in `build.gradle.kts`.
+
+**Important**: Since the Typeflows class is in the `com.example` package, you must specify the fully qualified class name in the plugin configuration:
 
 ```kotlin
+plugins {
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.typeflows)
+}
+
+dependencies {
+    typeflowsApi(libs.typeflows.github)
+}
+
 typeflows {
-    typeflowsClass = "com.example.Typeflows" // Defaults to "Typeflows"
+    typeflowsClass = "com.example.Typeflows" // Required for classes not in root package
 }
 ```
+
+**Note**: The `typeflowsClass = "com.example.Typeflows"` configuration is required because the class is not in the default (root) package. If your Typeflows class is in the root package (just `Typeflows`), you can omit this configuration.
+
+## Running the Example
+
+1. Navigate to the gradle directory: `cd jvm/gradle`
+2. Run the export: `./gradlew typeflowsExport`
+3. Check the generated `.github/` folder in the gradle directory
