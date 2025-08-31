@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>typeflows-maven-parent</artifactId>
+        <version>LOCAL</version>
+    </parent>
+    
+    <artifactId>typeflows</artifactId>
+    <name>Typeflows</name>
+
+    <properties>
+        <typeflows.version>0.8.0-beta</typeflows.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.typeflows</groupId>
+            <artifactId>typeflows-github</artifactId>
+            <version>${typeflows.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>io.typeflows</groupId>
+                <artifactId>typeflows-maven-plugin</artifactId>
+                <version>${typeflows.version}</version>
+                <configuration>
+                    <targetDirectory>../</targetDirectory>
+                    <typeflowsClass>com.example.Typeflows</typeflowsClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>export</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
