@@ -1,28 +1,19 @@
 # Typeflows Examples
 
-This repository contains examples demonstrating how to use the Typeflows libraries to create type-safe workflow definitions.
-
 ## Overview
 
-Typeflows is a set of libraries that allow you to define workflows using type-safe code instead of YAML or other configuration formats. This examples repository showcases various patterns and use cases.
+Typeflows is a type-safe GitHub configuration platform that replaces manual GitHub management with programmable, testable, and shareable code. You can use Typeflows to manage your entire `.github/` folder - workflows, security policies, branch protection, and more. This repository contains project examples demonstrating how to use Typeflows across different programming languages and build systems.
+
+Stop copy-pasting configurations between repositories and start treating your GitHub setup as infrastructure!
 
 ## Supported Platforms
 
-- **JVM** - Kotlin/Java examples for creating GitHub Actions workflows
+- **JVM** - Kotlin/Java examples for complete `.github/` folder management
+  - [`jvm/gradle`](jvm/gradle/) - Gradle-based example with workflows, security policies, and GitHub configuration
 
 ## Getting Started
 
-### Prerequisites
-
-- Java 21 or higher
-
-### Running Examples
-
-To generate workflows from the examples into .github/workflows, run the following command from the root of the project:
-
-```bash
-./gradlew typeflowsExport
-```
+Each platform has its own specific setup and usage instructions. Please refer to the README in each example directory for detailed guidance.
 
 ## License
 
