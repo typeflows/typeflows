@@ -10,6 +10,7 @@ Stop copy-pasting configurations between repositories and start treating your Gi
 
 - **JVM** - Kotlin/Java examples for complete `.github/` folder management
   - [`jvm/gradle`](jvm/gradle/) - Gradle-based example with workflows, security policies, and GitHub configuration
+  - [`jvm/maven`](jvm/maven/) - Maven-based example with custom actions, workflows, and Dependabot configuration
 
 ## Getting Started
 

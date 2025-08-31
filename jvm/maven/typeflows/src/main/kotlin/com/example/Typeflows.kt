@@ -1,6 +1,6 @@
 package com.example
 
-import com.example.actions.RunGradleBuildAndReport
+import com.example.actions.RunMavenBuildAndReport
 import com.example.workflows.Build
 import io.typeflows.TypeflowsRepo
 import io.typeflows.github.DotGitHub
@@ -17,7 +17,7 @@ class Typeflows : Builder<TypeflowsRepo> {
         dotGithub = DotGitHub {
             workflows += Build()
 
-            actions += RunGradleBuildAndReport()
+            actions += RunMavenBuildAndReport()
 
             files += Dependabot {
                 updates += Update(Maven) {
