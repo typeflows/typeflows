@@ -74,5 +74,6 @@ class Build : Builder<Workflow> {
                 with["client-payload"] = $$"{\"tag\": \"${{ steps.get-version.outputs.tag }}\"}"
             }
         }
+
     }
 }

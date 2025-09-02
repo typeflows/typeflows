@@ -10,6 +10,7 @@ import io.typeflows.github.dependabot.PackageEcosystem.Maven
 import io.typeflows.github.dependabot.Schedule
 import io.typeflows.github.dependabot.ScheduleInterval.Monthly
 import io.typeflows.github.dependabot.Update
+import io.typeflows.github.workflows.WorkflowVisualisations
 import io.typeflows.util.Builder
 
 class Typeflows : Builder<TypeflowsRepo> {
@@ -24,6 +25,8 @@ class Typeflows : Builder<TypeflowsRepo> {
                     schedule = Schedule(Monthly)
                 }
             }
+
+            files += WorkflowVisualisations(workflows)
         }
     }
 }

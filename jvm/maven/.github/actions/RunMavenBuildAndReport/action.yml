@@ -1,0 +1,20 @@
+name: Run Maven Build and Report
+description: Builds from Maven and reports test results
+inputs:
+  github-token:
+    description: GitHub token for authentication with the GitHub API
+    type: string
+runs:
+  using: composite
+  steps:
+  - name: Build and Test
+    run: mvn clean test
+    shell: bash
+  - name: Publish Test Report
+    uses: mikepenz/action-junit-report@v5.6.2
+    if: always()
+    with:
+      report_paths: '**/target/surefire-reports/TEST-*.xml'
+      github_token: ${{ inputs.github-token }}
+      check_annotations: 'true'
+      update_check: 'true'
