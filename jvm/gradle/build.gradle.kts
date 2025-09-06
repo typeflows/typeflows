@@ -16,6 +16,8 @@ dependencies {
     // Add dependencies needed to build your Workflows
     typeflowsApi(libs.typeflows.github)
     // or... typeflowsApi("io.typeflows:typeflows-github:VERSION")
+    typeflowsApi(libs.typeflows.github.marketplace)
+    // or... typeflowsApi("io.typeflows:typeflows-github-marketplace:VERSION")
 }
 
 typeflows {

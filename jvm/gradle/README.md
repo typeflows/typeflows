@@ -41,12 +41,13 @@ The Typeflows plugin is configured in `build.gradle.kts`.
 
 ```kotlin
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.typeflows)
+    kotlin("jvm") 
+    id("io.typeflows") version "X.Y.Z" // Use the latest version
 }
 
 dependencies {
-    typeflowsApi(libs.typeflows.github)
+    typeflowsApi("io.typeflows:typeflows-github:X.Y.Z")
+    typeflowsApi("io.typeflows:typeflows-github-marketplace:X.Y.Z")
 }
 
 typeflows {
