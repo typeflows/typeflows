@@ -61,4 +61,4 @@ typeflows {
 
 1. Navigate to the gradle directory: `cd jvm/gradle`
 2. Run the export: `./gradlew typeflowsExport`
-3. Check the generated `.github/` folder in the gradle directory
+3. Check the generated `.github/` folder in the gradle directory.

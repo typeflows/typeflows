@@ -3,6 +3,7 @@ package com.example.actions
 import io.typeflows.github.workflows.Action
 import io.typeflows.github.workflows.Conditions.always
 import io.typeflows.github.workflows.Input
+import io.typeflows.github.workflows.Workflow
 import io.typeflows.github.workflows.steps.RunCommand
 import io.typeflows.github.workflows.steps.UseAction
 import io.typeflows.util.Builder
@@ -19,7 +20,7 @@ class RunGradleBuildAndReport : Builder<Action> {
         steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
             condition = always()
             with["report_paths"] = "**/build/test-results/test/TEST-*.xml"
-            with["github_token"] = $$"${{ inputs.github-token }}"
+            with["github_token"] = Workflow.Inputs.string("github-token")
             with["check_annotations"] = "true"
             with["update_check"] = "true"
         }
