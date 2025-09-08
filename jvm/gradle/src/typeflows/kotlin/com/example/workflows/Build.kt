@@ -66,14 +66,11 @@ class Build : Builder<Workflow> {
 
             steps += SendRepositoryDispatch(
                 "release", Secrets.string("WORKFLOWS_TOKEN"),
-                mapOf(
-                    "tag" to $$"${{ steps.get-version.outputs.tag }}"
-                )
+                mapOf("tag" to $$"${{ steps.get-version.outputs.tag }}")
             ) {
                 condition = GitHub.ref.isEqualTo("refs/heads/main")
                     .and(StrExp.of("steps.get-version.outputs.tag-created").isEqualTo("true"))
             }
         }
-
     }
 }

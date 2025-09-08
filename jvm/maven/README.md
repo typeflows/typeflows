@@ -81,6 +81,22 @@ The Typeflows and Kotlin Maven plugins are configured in `typeflows/pom.xml`.
 </plugin>
 ```
 
+Also, include the necessary Typeflows dependencies:
+```xml
+    <dependencies>
+        <dependency>
+            <groupId>io.typeflows</groupId>
+            <artifactId>typeflows-github</artifactId>
+            <version>${typeflows.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.typeflows</groupId>
+            <artifactId>typeflows-github-marketplace</artifactId>
+            <version>${typeflows.version}</version>
+        </dependency>
+    </dependencies>
+```
+
 **Note**: The `<typeflowsClass>com.example.Typeflows</typeflowsClass>` configuration is required because the class is not in the default (root) package. If your Typeflows class is in the root package (just `Typeflows`), you can omit this configuration.
 
 ## Running the Example

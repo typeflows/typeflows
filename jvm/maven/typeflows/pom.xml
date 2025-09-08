@@ -14,13 +14,18 @@
     <name>Typeflows</name>
 
     <properties>
-        <typeflows.version>0.10.0-beta</typeflows.version>
+        <typeflows.version>0.16.0-beta</typeflows.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>io.typeflows</groupId>
             <artifactId>typeflows-github</artifactId>
+            <version>${typeflows.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.typeflows</groupId>
+            <artifactId>typeflows-github-marketplace</artifactId>
             <version>${typeflows.version}</version>
         </dependency>
         <dependency>
