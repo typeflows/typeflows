@@ -18,7 +18,8 @@ public class Deploy implements Builder<Workflow> {
     @NotNull
     @Override
     public Workflow build() {
-        return Workflow.configure("Deploy to Production", workflow -> {
+        return Workflow.configure("deploy", workflow -> {
+            workflow.displayName = "Deploy to Production";
             workflow.on.add(Push.configure(push -> {
                 push.branches = Branches.Only("release");
                 push.paths = Paths.Only("src/**");

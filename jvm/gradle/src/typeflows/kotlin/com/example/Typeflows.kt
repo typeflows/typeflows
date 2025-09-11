@@ -10,7 +10,7 @@ import io.typeflows.github.dependabot.Dependabot
 import io.typeflows.github.dependabot.PackageEcosystem.Maven
 import io.typeflows.github.dependabot.ScheduleInterval.Monthly
 import io.typeflows.github.dependabot.Update
-import io.typeflows.github.workflows.WorkflowVisualisations
+import io.typeflows.github.visualisation.WorkflowVisualisations
 import io.typeflows.util.Builder
 
 class Typeflows : Builder<TypeflowsGitHubRepo> {

@@ -8,7 +8,8 @@ import io.typeflows.github.workflows.steps.UseAction
 import io.typeflows.util.Builder
 
 class RunMavenBuildAndReport : Builder<Action> {
-    override fun build() = Action("Run Maven Build and Report", "Builds from Maven and reports test results") {
+    override fun build() = Action("run-maven-build-and-report", "Builds from Maven and reports test results") {
+        displayName = "Run Maven Build and Report"
         inputs += Input.string(
             "github-token",
             "GitHub token for authentication with the GitHub API"

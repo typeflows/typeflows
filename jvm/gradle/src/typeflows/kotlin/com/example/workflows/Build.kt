@@ -27,7 +27,9 @@ import io.typeflows.github.workflows.triggers.WorkflowDispatch
 import io.typeflows.util.Builder
 
 class Build : Builder<Workflow> {
-    override fun build() = Workflow("Build") {
+    override fun build() = Workflow("build") {
+        displayName = "Build"
+
         on += WorkflowDispatch.configure()
 
         permissions = Permissions(Permission.Contents to PermissionLevel.Write)

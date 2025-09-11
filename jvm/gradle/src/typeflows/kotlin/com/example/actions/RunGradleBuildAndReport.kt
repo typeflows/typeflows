@@ -9,7 +9,8 @@ import io.typeflows.github.workflows.steps.UseAction
 import io.typeflows.util.Builder
 
 class RunGradleBuildAndReport : Builder<Action> {
-    override fun build() = Action("Run Gradle Build and Report", "Builds from Gradle and reports test results") {
+    override fun build() = Action("run-build-and-report", "Builds from Gradle and reports test results") {
+        displayName = "Run Gradle Build and Report"
         inputs += Input.string(
             "github-token",
             "GitHub token for authentication with the GitHub API"
