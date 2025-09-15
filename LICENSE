@@ -1,0 +1,76 @@
+---
+title: Typeflows Beta License
+description: Closed-source commercial software license
+---
+
+**Effective Date:** 2025-08-01
+**Applies to:** Typeflows developer tooling and associated software
+**License Version:** Beta 1.0
+
+## 1. Overview
+
+Typeflows is closed-source commercial software provided free of charge during the beta period for evaluation and feedback. This License applies until the official release (v1.0.0).
+
+## 2. Beta License Grant
+
+During the beta period, you are granted a **non-exclusive, non-transferable, revocable license** to use the software as follows:
+
+- **Open source, academic, personal, and non-profit use**: Permitted without restriction, including production use, and continues to be free after v1.0.0
+- **Commercial use**: Evaluation and testing purposes only (no production or revenue-generating use)
+
+You may not:
+- Reverse engineer, decompile, or disassemble the software
+- Repackage, resell, sublicense, or distribute it
+- Use it to develop a competing product or service
+- Remove or alter attribution, branding, or license notices
+
+## 3. Source Code and Intellectual Property
+
+The software is provided only in compiled/binary form. No source code is provided or licensed.
+
+All rights, title, and interest in and to the software remain the exclusive property of Typeflows. No rights are granted except those expressly stated in this License.
+
+## 4. Post-Beta Licensing (v1.0.0+)
+
+When Typeflows v1.0.0 is released:
+
+- **Always free**: Open source projects (OSI-approved licenses), academic research, personal projects, and non-profit organizations
+- **Commercial license required**: All business and revenue-generating use
+
+Beta users will receive advance notice and preferential pricing before commercial licensing begins.
+
+## 5. Beta Software Disclaimer
+
+This software is pre-release and may contain defects or incomplete features. It is provided **"as is"** without warranties of any kind. Use is at your own risk.
+
+To the maximum extent permitted by law, all implied warranties, including but not limited to merchantability, fitness for a particular purpose, and non-infringement, are disclaimed.
+
+Typeflows is not liable for any direct, indirect, incidental, or consequential damages resulting from use.
+
+## 6. Feedback and Data Collection
+
+- By submitting feedback, you grant Typeflows a **perpetual, irrevocable, worldwide, royalty-free license** to use that feedback without restriction or compensation
+- We may collect usage analytics and crash reports to improve the software
+- We do not collect proprietary code or sensitive data (see [Privacy Policy](https://typeflows.io/privacy))
+
+## 7. Termination
+
+This License terminates if:
+- The beta period ends (upon v1.0.0 release), unless you obtain appropriate licensing
+- You violate any terms of this agreement
+- Typeflows revokes access with 14 days' written notice (e.g., via email to the address associated with your account)
+
+Upon termination, you must cease all use unless you obtain an appropriate license.
+
+## 8. Governing Law
+
+This License is governed by the laws of England and Wales. Disputes are subject to the exclusive jurisdiction of the courts of England and Wales.
+
+## 9. Acceptance
+
+By using the software, you agree to these terms.
+
+---
+
+**Contact**: [hello@typeflows.io](mailto:hello@typeflows.io)
+**License updates**: [typeflows.io/license](https://typeflows.io/license)

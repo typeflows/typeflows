@@ -6,15 +6,9 @@ Typeflows is a type-safe GitHub configuration platform that replaces manual GitH
 
 Stop copy-pasting configurations between repositories and start treating your GitHub setup as infrastructure!
 
-## Supported Platforms
+## See it in action!
 
-- **JVM** - Kotlin/Java examples for complete `.github/` folder management
-  - [`jvm/gradle`](jvm/gradle/) - Gradle-based example with workflows, security policies, and GitHub configuration
-  - [`jvm/maven`](jvm/maven/) - Maven-based example with custom actions, workflows, and Dependabot configuration
-
-## Getting Started
-
-Each platform has its own specific setup and usage instructions. Please refer to the README in each example directory for detailed guidance.
+See the [`examples`](examples/) directory for all available examples on all supported platforms.
 
 ## License
 
