@@ -2,6 +2,7 @@
 kotlin = "2.2.20"
 typeflows = "0.21.0-beta"
 version-catalog-update = "1.0.0"
+junit = "4.13.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
@@ -12,3 +13,4 @@ version-catalog-update = { id = "nl.littlerobots.version-catalog-update", versio
 typeflows-github = { module = "io.typeflows:typeflows-github", version.ref = "typeflows" }
 typeflows-github-marketplace = { module = "io.typeflows:typeflows-github-marketplace", version.ref = "typeflows" }
 typeflows-github-project-standards = { module = "io.typeflows:typeflows-project-standards", version.ref = "typeflows" }
+junit = { module = "junit:junit", version.ref = "junit" }
