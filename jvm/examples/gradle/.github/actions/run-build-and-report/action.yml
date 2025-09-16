@@ -1,0 +1,20 @@
+name: Run Gradle Build and Report
+description: Builds from Gradle and reports test results
+inputs:
+  github-token:
+    description: GitHub token for authentication with the GitHub API
+    type: string
+runs:
+  using: composite
+  steps:
+  - name: Build
+    run: ./gradlew check --info
+    shell: bash
+  - name: Publish Test Report
+    if: always()
+    uses: mikepenz/action-junit-report@v5.6.2
+    with:
+      report_paths: '**/build/test-results/test/TEST-*.xml'
+      github_token: ${{ inputs.github-token }}
+      check_annotations: 'true'
+      update_check: 'true'

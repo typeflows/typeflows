@@ -1,6 +1,6 @@
 [versions]
 kotlin = "2.2.20"
-typeflows = "0.18.0-beta"
+typeflows = "0.23.0-beta"
 version-catalog-update = "1.0.0"
 
 [plugins]
