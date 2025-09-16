@@ -4,7 +4,7 @@ name: Deploy to Production
     branches:
     - release
     paths:
-    - src/**
+    - ../../../../../src
 jobs:
   build:
     runs-on: ubuntu-latest

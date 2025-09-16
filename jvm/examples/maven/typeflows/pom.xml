@@ -100,7 +100,7 @@
                 <artifactId>typeflows-maven-plugin</artifactId>
                 <version>${typeflows.version}</version>
                 <configuration>
-                    <targetDirectory>../</targetDirectory>
+                    <targetDirectory>..</targetDirectory>
                     <typeflowsClass>com.example.Typeflows</typeflowsClass>
                 </configuration>
                 <executions>

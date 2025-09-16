@@ -8,7 +8,7 @@ Stop copy-pasting configurations between repositories and start treating your Gi
 
 ## See it in action!
 
-See the [`examples`](examples/) directory for all available examples on all supported platforms.
+- [JVM](jvm/): Typesafe GitHub configuration with Java and Kotlin DSL support. Build with Maven or Gradle.
 
 ## License
 
