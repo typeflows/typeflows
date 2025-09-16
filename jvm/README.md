@@ -2,8 +2,8 @@
 
 Kotlin/Java examples for complete `.github/` folder management
 
-- [`examples/gradle`](gradle/) - Gradle-based example with workflows, security policies, and GitHub configuration
-- [`examples/maven`](maven/) - Maven-based example with custom actions, workflows, and Dependabot configuration
+- [`examples/gradle`](examples/gradle/) - Basic Gradle-based repo with typesafe workflows, Dependabot and GitHub configuration in both Java and Kotlin
+- [`examples/maven`](examples/maven/) - Basic Maven-based repo with typesafe workflows, Dependabot and GitHub configuration in both Java and Kotlin
 
 ## Getting Started
 
