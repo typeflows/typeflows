@@ -1,5 +1,3 @@
-package io.typeflows.kotlin
-
 import io.typeflows.github.workflows.Cron
 import io.typeflows.github.workflows.Job
 import io.typeflows.github.workflows.Permission.Contents
@@ -11,11 +9,10 @@ import io.typeflows.github.workflows.Secrets
 import io.typeflows.github.workflows.StrExp
 import io.typeflows.github.workflows.Workflow
 import io.typeflows.github.workflows.steps.RunCommand
-import io.typeflows.github.workflows.steps.RunScript
 import io.typeflows.github.workflows.steps.UseAction
 import io.typeflows.github.workflows.steps.marketplace.Checkout
-import io.typeflows.github.workflows.steps.marketplace.JavaDistribution
-import io.typeflows.github.workflows.steps.marketplace.JavaVersion
+import io.typeflows.github.workflows.steps.marketplace.JavaDistribution.Temurin
+import io.typeflows.github.workflows.steps.marketplace.JavaVersion.V21
 import io.typeflows.github.workflows.steps.marketplace.SetupGradle
 import io.typeflows.github.workflows.steps.marketplace.SetupJava
 import io.typeflows.github.workflows.triggers.Schedule
@@ -23,32 +20,32 @@ import io.typeflows.github.workflows.triggers.WorkflowDispatch
 import io.typeflows.util.Builder
 
 class UpdateDependencies : Builder<Workflow> {
-    override fun build() = Workflow.configure("update-dependencies") { workflow ->
-        workflow.displayName = "Update Dependencies"
-        workflow.on += Schedule.configure { it ->
-            it.cron += Cron.of("0 12 * * *")
+    override fun build() = Workflow("update-dependencies") {
+        displayName = "Update Dependencies"
+        on += Schedule {
+            cron += Cron.of("0 12 * * *")
         }
-        workflow.on += WorkflowDispatch()
+        on += WorkflowDispatch()
 
-        workflow.jobs += Job.configure("update-dependencies", UBUNTU_LATEST) { job ->
-            job.permissions = Permissions(
+        jobs += Job("update-dependencies", UBUNTU_LATEST) {
+            permissions = Permissions(
                 Contents to Write,
                 PullRequests to Write
             )
 
-            job.steps += Checkout.Companion.configure("Checkout repository") { checkout ->
-                checkout.token = Secrets.GITHUB_TOKEN.toString()
+            steps += Checkout("Checkout repository") {
+                token = Secrets.GITHUB_TOKEN.toString()
             }
 
-            job.steps += SetupJava.Companion(JavaDistribution.Temurin, JavaVersion.V17, "Set up JDK")
+            steps += SetupJava(Temurin, V21, "Set up JDK")
 
-            job.steps += SetupGradle()
+            steps += SetupGradle()
 
-            job.steps += RunCommand.configure("./gradlew versionCatalogUpdate", "Update version catalog")
+            steps += RunCommand("./gradlew versionCatalogUpdate", "Update version catalog")
 
-            job.steps += RunCommand.configure("./gradlew build", "Build project")
+            steps += RunCommand("./gradlew build", "Build project")
 
-            job.steps += RunScript.configure(
+            steps += RunCommand(
                 $$"""
                 if git diff --quiet; then
                   echo "has_changes=false" >> $GITHUB_OUTPUT
@@ -57,14 +54,15 @@ class UpdateDependencies : Builder<Workflow> {
                 fi
                 """.trimIndent(),
                 "Check for changes"
-            ) { script ->
-                script.id = "changes"
+            ) {
+                id = "changes"
             }
 
-            job.steps += UseAction.configure("peter-evans/create-pull-request@v6", "Create Pull Request") { action ->
-                action.condition = StrExp.of("steps.changes.outputs.has_changes").isEqualTo("true")
-                action.with += mapOf(
-                    "token" to "\${{ secrets.GITHUB_TOKEN }}",
+            steps += UseAction("peter-evans/create-pull-request@v6", "Create Pull Request") {
+                condition = StrExp.of("steps.changes.outputs.has_changes")
+
+                with += mapOf(
+                    "token" to Secrets.GITHUB_TOKEN.toString(),
                     "commit-message" to "chore: update dependencies via version catalog",
                     "title" to "chore: update dependencies",
                     "body" to """

@@ -1,0 +1,56 @@
+name: Update Dependencies
+'on':
+  schedule:
+  - cron: 0 12 * * *
+  workflow_dispatch: {
+    }
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v5.0.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Set up JDK
+      uses: actions/setup-java@v5.0.0
+      with:
+        java-version: '21'
+        distribution: temurin
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4.4.2
+    - name: Update version catalog
+      run: ./gradlew versionCatalogUpdate
+      shell: bash
+    - name: Build project
+      run: ./gradlew build
+      shell: bash
+    - name: Check for changes
+      id: changes
+      run: |-
+        if git diff --quiet; then
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+      shell: bash
+    - name: Create Pull Request
+      if: steps.changes.outputs.has_changes
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: 'chore: update dependencies via version catalog'
+        title: 'chore: update dependencies'
+        body: |-
+          This PR updates dependencies using the gradle version catalog update plugin.
+
+          Changes made:
+          - Updated dependency versions in gradle/libs.versions.toml
+          - Verified build passes with updated dependencies
+
+          Please review the changes and merge if appropriate.
+        branch: update-dependencies
+        delete-branch: 'true'
