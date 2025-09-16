@@ -43,7 +43,7 @@ class UpdateDependencies : Builder<Workflow> {
 
             steps += RunCommand("./gradlew versionCatalogUpdate", "Update version catalog")
 
-            steps += RunCommand("./gradlew build", "Build project")
+            steps += RunCommand("./gradlew clean build", "Build project")
 
             steps += RunCommand(
                 $$"""

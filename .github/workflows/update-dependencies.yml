@@ -26,7 +26,7 @@ jobs:
       run: ./gradlew versionCatalogUpdate
       shell: bash
     - name: Build project
-      run: ./gradlew build
+      run: ./gradlew clean build
       shell: bash
     - name: Check for changes
       id: changes
