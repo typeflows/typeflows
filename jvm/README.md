@@ -1,5 +1,7 @@
 # Typeflows JVM
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.typeflows/typeflows-bom?label=typeflows)](https://search.maven.org/artifact/io.typeflows/typeflows-bom)
+
 Kotlin/Java examples for complete `.github/` folder management
 
 - [`examples/gradle`](examples/gradle/) - Basic Gradle-based repo with typesafe workflows, Dependabot and GitHub configuration in both Java and Kotlin
