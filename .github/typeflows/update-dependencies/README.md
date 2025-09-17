@@ -40,7 +40,7 @@ flowchart TD
     style action3 fill:#e1f5fe,stroke:#0277bd
     step3 -.-> action3
     step2 --> step3
-    step4["Step 4: Set up Gradle"]
+    step4["Step 4: Set up Maven"]
     style step4 fill:#f8f9fa,stroke:#495057
     action4["🎬 stCarolas<br/>setup-maven<br/><br/>📝 Inputs:<br/>• maven-version: 3.9.9"]
     style action4 fill:#e1f5fe,stroke:#0277bd

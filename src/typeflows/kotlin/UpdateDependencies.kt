@@ -44,7 +44,7 @@ class UpdateDependencies : Builder<Workflow> {
 
             steps += SetupGradle()
 
-            steps += UseAction("stCarolas/setup-maven@v5", "Set up Gradle") {
+            steps += UseAction("stCarolas/setup-maven@v5", "Set up Maven") {
                 with["maven-version"] = "3.9.9"
             }
 
