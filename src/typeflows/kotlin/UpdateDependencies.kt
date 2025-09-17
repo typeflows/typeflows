@@ -44,6 +44,10 @@ class UpdateDependencies : Builder<Workflow> {
 
             steps += SetupGradle()
 
+            steps += UseAction("stCarolas/setup-maven@v5", "Set up Gradle") {
+                with["maven-version"] = "3.9.9"
+            }
+
             steps += RunCommand("./gradlew versionCatalogUpdate build", "Build (Root)")
             steps += RunCommand("cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -", "Build (JVM Gradle)")
             steps += RunCommand("cd jvm/examples/maven && ./mvn versions:use-latest-versions && cd -", "Build (JVM Maven)")

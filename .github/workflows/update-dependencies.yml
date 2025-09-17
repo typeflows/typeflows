@@ -23,6 +23,10 @@ jobs:
         distribution: temurin
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4.4.2
+    - name: Set up Gradle
+      uses: stCarolas/setup-maven@v5
+      with:
+        maven-version: 3.9.9
     - name: Build (Root)
       run: ./gradlew versionCatalogUpdate build
       shell: bash
