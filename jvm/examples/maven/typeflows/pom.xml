@@ -18,7 +18,7 @@
             <dependency>
                 <groupId>io.typeflows</groupId>
                 <artifactId>typeflows-bom</artifactId>
-                <version>0.22.0-beta</version>
+                <version>0.23.0-beta</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
