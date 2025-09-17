@@ -9,6 +9,7 @@ import io.typeflows.github.workflows.Secrets
 import io.typeflows.github.workflows.StrExp
 import io.typeflows.github.workflows.Workflow
 import io.typeflows.github.workflows.steps.RunCommand
+import io.typeflows.github.workflows.steps.RunScript
 import io.typeflows.github.workflows.steps.UseAction
 import io.typeflows.github.workflows.steps.marketplace.Checkout
 import io.typeflows.github.workflows.steps.marketplace.JavaDistribution.Temurin
@@ -43,7 +44,8 @@ class UpdateDependencies : Builder<Workflow> {
 
             steps += RunCommand("./gradlew versionCatalogUpdate", "Update version catalog")
 
-            steps += RunCommand("./gradlew clean build", "Build project")
+            steps += RunCommand("./gradlew clean build", "Build (root)")
+            steps += RunCommand("cd jvm/examples/gradle && ./gradlew clean build && cd -", "Build (JVM gradle)")
 
             steps += RunCommand(
                 $$"""
