@@ -46,8 +46,8 @@ class UpdateDependencies : Builder<Workflow> {
 
             steps += RunCommand("./gradlew versionCatalogUpdate", "Update version catalog")
 
-            steps += RunCommand("./gradlew clean build", "Build (root)")
-            steps += RunCommand("cd jvm/examples/gradle && ./gradlew clean build && cd -", "Build (JVM gradle)")
+            steps += RunCommand("./gradlew clean build typeflowsExport", "Build (root)")
+            steps += RunCommand("cd jvm/examples/gradle && ./gradlew clean build typeflowsExport && cd -", "Build (JVM gradle)")
 
             steps += RunCommand(
                 $$"""
