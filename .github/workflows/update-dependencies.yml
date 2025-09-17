@@ -8,6 +8,7 @@ jobs:
   update-dependencies:
     runs-on: ubuntu-latest
     permissions:
+      actions: write
       contents: write
       pull-requests: write
     steps:
@@ -25,8 +26,11 @@ jobs:
     - name: Update version catalog
       run: ./gradlew versionCatalogUpdate
       shell: bash
-    - name: Build project
+    - name: Build (root)
       run: ./gradlew clean build
+      shell: bash
+    - name: Build (JVM gradle)
+      run: cd jvm/examples/gradle && ./gradlew clean build && cd -
       shell: bash
     - name: Check for changes
       id: changes

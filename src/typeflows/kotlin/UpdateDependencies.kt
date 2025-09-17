@@ -1,5 +1,7 @@
 import io.typeflows.github.workflows.Cron
 import io.typeflows.github.workflows.Job
+import io.typeflows.github.workflows.Permission
+import io.typeflows.github.workflows.Permission.Actions
 import io.typeflows.github.workflows.Permission.Contents
 import io.typeflows.github.workflows.Permission.PullRequests
 import io.typeflows.github.workflows.PermissionLevel.Write
@@ -9,7 +11,6 @@ import io.typeflows.github.workflows.Secrets
 import io.typeflows.github.workflows.StrExp
 import io.typeflows.github.workflows.Workflow
 import io.typeflows.github.workflows.steps.RunCommand
-import io.typeflows.github.workflows.steps.RunScript
 import io.typeflows.github.workflows.steps.UseAction
 import io.typeflows.github.workflows.steps.marketplace.Checkout
 import io.typeflows.github.workflows.steps.marketplace.JavaDistribution.Temurin
@@ -30,6 +31,7 @@ class UpdateDependencies : Builder<Workflow> {
 
         jobs += Job("update-dependencies", UBUNTU_LATEST) {
             permissions = Permissions(
+                Actions to Write,
                 Contents to Write,
                 PullRequests to Write
             )
