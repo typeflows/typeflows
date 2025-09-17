@@ -4,11 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### 0.22.0-beta
-- **typeflows-***: Added support for AGENTS.md file in generated repositories.
+### 0.23.0-beta
+- **typeflows-***: Dependency updates
 - **typeflows-***: Added support for Junie as an agent configuration in generated repositories.
+
+### 0.22.0-beta
+- **typeflows-***: Dependency updates
+- **typeflows-***: Added support for AGENTS.md file in generated repositories.
 - **typeflows-***: File content can now convert themselves into TypeflowFile instances (convenience method `toTypeflowFile`).
-- **typeflows-***: Generalise `Ignore` format.
 
 ### 0.21.0-beta
 - **typeflows-project-standards**: Fix location of gradle wrapper properties
