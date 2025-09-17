@@ -23,14 +23,11 @@ jobs:
         distribution: temurin
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4.4.2
-    - name: Update version catalog
-      run: ./gradlew versionCatalogUpdate
-      shell: bash
     - name: Build (root)
-      run: ./gradlew clean build typeflowsExport
+      run: ./gradlew versionCatalogUpdate build
       shell: bash
     - name: Build (JVM gradle)
-      run: cd jvm/examples/gradle && ./gradlew clean build typeflowsExport && cd -
+      run: cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -
       shell: bash
     - name: Check for changes
       id: changes
