@@ -34,7 +34,8 @@ jobs:
       run: cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -
       shell: bash
     - name: Build (JVM Maven)
-      run: cd jvm/examples/maven && mvn versions:use-latest-versions && cd -
+      run: cd jvm/examples/maven && mvn versions:use-latest-versions -DgenerateBackupPoms=false
+        && cd -
       shell: bash
     - name: Check for changes
       id: changes
