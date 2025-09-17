@@ -13,20 +13,26 @@
     <artifactId>typeflows</artifactId>
     <name>Typeflows</name>
 
-    <properties>
-        <typeflows.version>0.23.0-beta</typeflows.version>
-    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.typeflows</groupId>
+                <artifactId>typeflows-bom</artifactId>
+                <version>0.22.0-beta</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>io.typeflows</groupId>
             <artifactId>typeflows-github</artifactId>
-            <version>${typeflows.version}</version>
         </dependency>
         <dependency>
             <groupId>io.typeflows</groupId>
             <artifactId>typeflows-github-marketplace</artifactId>
-            <version>${typeflows.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -98,7 +104,7 @@
             <plugin>
                 <groupId>io.typeflows</groupId>
                 <artifactId>typeflows-maven-plugin</artifactId>
-                <version>${typeflows.version}</version>
+                <version>0.22.0-beta</version>
                 <configuration>
                     <targetDirectory>..</targetDirectory>
                     <typeflowsClass>com.example.Typeflows</typeflowsClass>
