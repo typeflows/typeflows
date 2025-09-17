@@ -50,7 +50,7 @@ class UpdateDependencies : Builder<Workflow> {
 
             steps += RunCommand("./gradlew versionCatalogUpdate build", "Build (Root)")
             steps += RunCommand("cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -", "Build (JVM Gradle)")
-            steps += RunCommand("cd jvm/examples/maven && ./mvn versions:use-latest-versions && cd -", "Build (JVM Maven)")
+            steps += RunCommand("cd jvm/examples/maven && mvn versions:use-latest-versions && cd -", "Build (JVM Maven)")
 
             steps += RunCommand(
                 $$"""
