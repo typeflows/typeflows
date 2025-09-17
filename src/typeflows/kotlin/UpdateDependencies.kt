@@ -70,14 +70,12 @@ class UpdateDependencies : Builder<Workflow> {
 
                 with += mapOf(
                     "token" to Secrets.GITHUB_TOKEN.toString(),
-                    "commit-message" to "chore: update dependencies via version catalog",
+                    "commit-message" to "chore: update dependencies",
                     "title" to "chore: update dependencies",
                     "body" to """
-                        This PR updates dependencies using the gradle version catalog update plugin.
+                        This PR updates dependencies in the various projects in this repo.
                         
-                        Changes made:
-                        - Updated dependency versions in gradle/libs.versions.toml
-                        - Verified build passes with updated dependencies
+                        Verified build passes with updated dependencies
                         
                         Please review the changes and merge if appropriate.
                     """.trimIndent(),

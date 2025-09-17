@@ -51,14 +51,12 @@ jobs:
       uses: peter-evans/create-pull-request@v6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: 'chore: update dependencies via version catalog'
+        commit-message: 'chore: update dependencies'
         title: 'chore: update dependencies'
         body: |-
-          This PR updates dependencies using the gradle version catalog update plugin.
+          This PR updates dependencies in the various projects in this repo.
 
-          Changes made:
-          - Updated dependency versions in gradle/libs.versions.toml
-          - Verified build passes with updated dependencies
+          Verified build passes with updated dependencies
 
           Please review the changes and merge if appropriate.
         branch: update-dependencies

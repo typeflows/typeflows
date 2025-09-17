@@ -60,7 +60,7 @@ flowchart TD
     step7 --> step8
     step9["Step 9: Create Pull Request<br/>🔐 if: steps.changes.outputs.has_changes"]
     style step9 fill:#f8f9fa,stroke:#495057
-    action9["🎬 peter-evans<br/>create-pull-request<br/><br/>📝 Inputs:<br/>• token: ${{ secrets.GITHUB_TOKEN }}<br/>• commit-message: chore: update dependencies via...<br/>• title: chore: update dependencies<br/>• body: This PR updates dependencies u...<br/>• branch: update-dependencies<br/>• delete-branch: true"]
+    action9["🎬 peter-evans<br/>create-pull-request<br/><br/>📝 Inputs:<br/>• token: ${{ secrets.GITHUB_TOKEN }}<br/>• commit-message: chore: update dependencies<br/>• title: chore: update dependencies<br/>• body: This PR updates dependencies i...<br/>• branch: update-dependencies<br/>• delete-branch: true"]
     style action9 fill:#e1f5fe,stroke:#0277bd
     step9 -.-> action9
     step8 --> step9
