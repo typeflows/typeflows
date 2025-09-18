@@ -11,7 +11,3 @@ Stop copy-pasting configurations between repositories and start treating your Gi
 ### JVM
 [![Maven Central](https://img.shields.io/maven-central/v/io.typeflows/typeflows-bom?label=typeflows)](https://search.maven.org/artifact/io.typeflows/typeflows-bom)
 - [See it!](jvm/): Typesafe GitHub configuration with Java and Kotlin DSL support. Build with Maven or Gradle.
-
-## License
-
-This project is licensed under the same terms as the main Typeflows project. See [https://typeflows.io/license](https://typeflows.io/license) for details.
