@@ -1,13 +1,13 @@
 package com.example.workflows;
 
-import io.typeflows.github.workflows.Job;
-import io.typeflows.github.workflows.Workflow;
-import io.typeflows.github.workflows.steps.RunCommand;
-import io.typeflows.github.workflows.steps.UseAction;
-import io.typeflows.github.workflows.steps.marketplace.Checkout;
-import io.typeflows.github.workflows.triggers.Branches;
-import io.typeflows.github.workflows.triggers.Paths;
-import io.typeflows.github.workflows.triggers.Push;
+import io.typeflows.github.workflow.Job;
+import io.typeflows.github.workflow.Workflow;
+import io.typeflows.github.workflow.step.RunCommand;
+import io.typeflows.github.workflow.step.UseAction;
+import io.typeflows.github.workflow.step.marketplace.Checkout;
+import io.typeflows.github.workflow.trigger.Branches;
+import io.typeflows.github.workflow.trigger.Paths;
+import io.typeflows.github.workflow.trigger.Push;
 import io.typeflows.util.Builder;
 import org.jetbrains.annotations.NotNull;
 

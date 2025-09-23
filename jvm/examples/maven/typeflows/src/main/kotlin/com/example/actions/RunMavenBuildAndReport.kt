@@ -1,10 +1,10 @@
 package com.example.actions
 
-import io.typeflows.github.workflows.Action
-import io.typeflows.github.workflows.Conditions.always
-import io.typeflows.github.workflows.Input
-import io.typeflows.github.workflows.steps.RunCommand
-import io.typeflows.github.workflows.steps.UseAction
+import io.typeflows.github.workflow.Action
+import io.typeflows.github.workflow.Conditions.always
+import io.typeflows.github.workflow.Input
+import io.typeflows.github.workflow.step.RunCommand
+import io.typeflows.github.workflow.step.UseAction
 import io.typeflows.util.Builder
 
 class RunMavenBuildAndReport : Builder<Action> {

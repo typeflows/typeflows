@@ -1,24 +1,23 @@
-import io.typeflows.github.workflows.Cron
-import io.typeflows.github.workflows.Job
-import io.typeflows.github.workflows.Permission
-import io.typeflows.github.workflows.Permission.Actions
-import io.typeflows.github.workflows.Permission.Contents
-import io.typeflows.github.workflows.Permission.PullRequests
-import io.typeflows.github.workflows.PermissionLevel.Write
-import io.typeflows.github.workflows.Permissions
-import io.typeflows.github.workflows.RunsOn.Companion.UBUNTU_LATEST
-import io.typeflows.github.workflows.Secrets
-import io.typeflows.github.workflows.StrExp
-import io.typeflows.github.workflows.Workflow
-import io.typeflows.github.workflows.steps.RunCommand
-import io.typeflows.github.workflows.steps.UseAction
-import io.typeflows.github.workflows.steps.marketplace.Checkout
-import io.typeflows.github.workflows.steps.marketplace.JavaDistribution.Temurin
-import io.typeflows.github.workflows.steps.marketplace.JavaVersion.V21
-import io.typeflows.github.workflows.steps.marketplace.SetupGradle
-import io.typeflows.github.workflows.steps.marketplace.SetupJava
-import io.typeflows.github.workflows.triggers.Schedule
-import io.typeflows.github.workflows.triggers.WorkflowDispatch
+import io.typeflows.github.workflow.Cron
+import io.typeflows.github.workflow.Job
+import io.typeflows.github.workflow.Permission.Actions
+import io.typeflows.github.workflow.Permission.Contents
+import io.typeflows.github.workflow.Permission.PullRequests
+import io.typeflows.github.workflow.PermissionLevel.Write
+import io.typeflows.github.workflow.Permissions
+import io.typeflows.github.workflow.RunsOn.Companion.UBUNTU_LATEST
+import io.typeflows.github.workflow.Secrets
+import io.typeflows.github.workflow.StrExp
+import io.typeflows.github.workflow.Workflow
+import io.typeflows.github.workflow.step.RunCommand
+import io.typeflows.github.workflow.step.UseAction
+import io.typeflows.github.workflow.step.marketplace.Checkout
+import io.typeflows.github.workflow.step.marketplace.JavaDistribution.Temurin
+import io.typeflows.github.workflow.step.marketplace.JavaVersion.V21
+import io.typeflows.github.workflow.step.marketplace.SetupGradle
+import io.typeflows.github.workflow.step.marketplace.SetupJava
+import io.typeflows.github.workflow.trigger.Schedule
+import io.typeflows.github.workflow.trigger.WorkflowDispatch
 import io.typeflows.util.Builder
 
 class UpdateDependencies : Builder<Workflow> {
@@ -49,8 +48,14 @@ class UpdateDependencies : Builder<Workflow> {
             }
 
             steps += RunCommand("./gradlew versionCatalogUpdate build", "Build (Root)")
-            steps += RunCommand("cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -", "Build (JVM Gradle)")
-            steps += RunCommand("cd jvm/examples/maven/typeflows && mvn versions:update-properties -DgenerateBackupPoms=false && mvn typeflows:export && cd -", "Build (JVM Maven)")
+            steps += RunCommand(
+                "cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -",
+                "Build (JVM Gradle)"
+            )
+            steps += RunCommand(
+                "cd jvm/examples/maven/typeflows && mvn versions:update-properties -DgenerateBackupPoms=false && mvn typeflows:export && cd -",
+                "Build (JVM Maven)"
+            )
 
             steps += RunCommand(
                 $$"""
