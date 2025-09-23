@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 0.24.0-beta
+- **typeflows-***: [Breaking] Repackaged code to use singular names instead of plural (e.g. `io.typeflows.github.workflow` instead of `io.typeflows.github.workflows`).
+
 ### 0.23.0-beta
 - **typeflows-***: Dependency updates
 - **typeflows-***: Added support for Junie as an agent configuration in generated repositories.
