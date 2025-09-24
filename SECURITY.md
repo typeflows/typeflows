@@ -7,9 +7,9 @@
 Use this section to tell people about which versions of your project are
 currently being supported with security updates.
 
-| SDK | Version | Supported          |
-| --- | ------- | ------------------ |
-| JVM | 0.x.x   | :white_check_mark: |
+| SDK | Version | Supported |
+| --- | ------- | --------- |
+| JVM | 0.x.x   | ✅ |
 
 ## Reporting a Vulnerability
 
