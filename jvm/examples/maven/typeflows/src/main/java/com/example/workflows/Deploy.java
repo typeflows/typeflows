@@ -11,8 +11,7 @@ import io.typeflows.github.workflow.trigger.Push;
 import io.typeflows.util.Builder;
 import org.jetbrains.annotations.NotNull;
 
-import static io.typeflows.github.workflows.RunsOn.UBUNTU_LATEST;
-import static io.typeflows.github.workflows.steps.marketplace.Checkout.configure;
+import static io.typeflows.github.workflow.RunsOn.UBUNTU_LATEST;
 
 public class Deploy implements Builder<Workflow> {
 

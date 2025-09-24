@@ -14,7 +14,7 @@
     <name>Typeflows</name>
 
     <properties>
-        <typeflows.version>0.23.0-beta</typeflows.version>
+        <typeflows.version>0.24.0-beta</typeflows.version>
     </properties>
 
     <dependencies>
