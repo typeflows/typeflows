@@ -1,5 +1,5 @@
 <div class="github-only">
-    # Typeflows Security Policy
+    <h1>Typeflows Security Policy</h1>
 </div>
 
 ## Supported Versions

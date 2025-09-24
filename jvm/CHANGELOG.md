@@ -1,4 +1,6 @@
-# Changelog
+<div class="github-only">
+    <h1>Changelog</h1>
+</div>
 
 All notable changes to this project will be documented in this file.
 
