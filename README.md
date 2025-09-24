@@ -1,4 +1,4 @@
-# Typeflows Examples
+# Typeflows - Type-safe GitHub configuration as code
 
 ## Overview
 

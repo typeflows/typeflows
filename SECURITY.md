@@ -1,4 +1,6 @@
-# Security Policy
+<div class="github-only">
+    # Typeflows Security Policy
+</div>
 
 ## Supported Versions
 
