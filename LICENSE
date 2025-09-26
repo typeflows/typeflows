@@ -1,28 +1,29 @@
----
-title: Typeflows Beta License
-description: Closed-source commercial software license
----
+<div class="github-only">
+    <h1>Typeflows Beta License</h1>
+</div>
 
 **Effective Date:** 2025-08-01
+
 **Applies to:** Typeflows developer tooling and associated software
+
 **License Version:** Beta 1.0
 
 ## 1. Overview
 
-Typeflows is closed-source commercial software provided free of charge during the beta period for evaluation and feedback. This License applies until the official release (v1.0.0).
+Typeflows is closed-source commercial software provided **free of charge during beta period** for all users. This License governs use until v1.0.0 release.
 
 ## 2. Beta License Grant
 
-During the beta period, you are granted a **non-exclusive, non-transferable, revocable license** to use the software as follows:
-
-- **Open source, academic, personal, and non-profit use**: Permitted without restriction, including production use, and continues to be free after v1.0.0
-- **Commercial use**: Evaluation and testing purposes only (no production or revenue-generating use)
+You are granted a **non-exclusive, non-transferable, revocable license** to:
+- ✅ Use Typeflows for open source, personal, academic, and non-profit projects
+- ✅ Use Typeflows for commercial evaluation, testing, and development
+- ✅ Use Typeflows in commercial production (beta period only)
 
 You may not:
-- Reverse engineer, decompile, or disassemble the software
-- Repackage, resell, sublicense, or distribute it
-- Use it to develop a competing product or service
-- Remove or alter attribution, branding, or license notices
+- ❌ Reverse engineer, decompile, or disassemble the software
+- ❌ Repackage, resell, sublicense, or distribute it
+- ❌ Use it to develop a competing product or service
+- ❌ Remove or alter attribution, branding, or license notices
 
 ## 3. Source Code and Intellectual Property
 
@@ -32,12 +33,14 @@ All rights, title, and interest in and to the software remain the exclusive prop
 
 ## 4. Post-Beta Licensing (v1.0.0+)
 
-When Typeflows v1.0.0 is released:
+After beta, Typeflows will use a **repository-based licensing model**:
 
-- **Always free**: Open source projects (OSI-approved licenses), academic research, personal projects, and non-profit organizations
-- **Commercial license required**: All business and revenue-generating use
+- **Always free**: Public repositories, open source projects (OSI-approved licenses), academic research, personal projects, and non-profit organizations
+- **Commercial license required**: Private repositories in commercial contexts, commercial products or services, enterprise/self-hosted deployments
 
-Beta users will receive advance notice and preferential pricing before commercial licensing begins.
+Registered commercial Beta users will receive advance notice and preferential pricing before commercial licensing begins.
+
+Details will be published at: [typeflows.io/license](https://typeflows.io/license)
 
 ## 5. Beta Software Disclaimer
 
