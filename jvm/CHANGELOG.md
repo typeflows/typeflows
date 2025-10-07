@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 0.25.0-beta
+- **typeflows-***: [Breaking] Introduced immutability, improved visualisations, and various API improvements.
+
 ### 0.24.0-beta
 - **typeflows-***: [Breaking] Repackaged code to use singular names instead of plural (e.g. `io.typeflows.github.workflow` instead of `io.typeflows.github.workflows`).
 
