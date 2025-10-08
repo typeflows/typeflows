@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 0.27.0-beta
+- **typeflows-core**: Add support for Claude, Gemini and Cursor LLM agent setups in generated repositories.
+- **typeflows-core**: [Fix] Ensure a TypeflowsDir cannot be written outside its parent directory.
+
 ### 0.26.0-beta
 - **typeflows-***: [Breaking] Rename `.configure()` to `.create()` for consistency across all builders.
 
