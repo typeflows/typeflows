@@ -30,7 +30,7 @@ class Build : Builder<Workflow> {
     override fun build() = Workflow("build") {
         displayName = "Build"
 
-        on += WorkflowDispatch.configure()
+        on += WorkflowDispatch()
 
         permissions = Permissions(Permission.Contents to PermissionLevel.Write)
 
