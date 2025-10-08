@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 0.26.0-beta
+- **typeflows-***: [Breaking] Rename `.configure()` to `.create()` for consistency across all builders.
+
 ### 0.25.0-beta
 - **typeflows-***: [Breaking] Introduced immutability, improved visualisations, and various API improvements.
 
