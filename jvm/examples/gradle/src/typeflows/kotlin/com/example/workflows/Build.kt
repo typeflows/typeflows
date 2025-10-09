@@ -3,8 +3,8 @@ package com.example.workflows
 import io.typeflows.github.workflow.Conditions.always
 import io.typeflows.github.workflow.GitHub
 import io.typeflows.github.workflow.Job
-import io.typeflows.github.workflow.Permission
-import io.typeflows.github.workflow.PermissionLevel
+import io.typeflows.github.workflow.Permission.Contents
+import io.typeflows.github.workflow.PermissionLevel.Write
 import io.typeflows.github.workflow.Permissions
 import io.typeflows.github.workflow.RunsOn
 import io.typeflows.github.workflow.Secrets
@@ -32,7 +32,7 @@ class Build : Builder<Workflow> {
 
         on += WorkflowDispatch()
 
-        permissions = Permissions(Permission.Contents to PermissionLevel.Write)
+        permissions = Permissions(Contents to Write)
 
         on += Push {
             branches = Branches.Ignore("develop")

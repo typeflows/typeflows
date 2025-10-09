@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.2.20"
-typeflows = "0.24.0-beta"
-version-catalog-update = "1.0.0"
+typeflows = "0.29.0-beta"
+version-catalog-update = "1.0.1"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
