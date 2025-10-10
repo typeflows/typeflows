@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 0.29.0-beta
+- **typeflows-github**: [Fix] Fix Branches wildcard
+- **typeflows-***: [Breaking] Consistentify all constructor classes
+
 ### 0.28.0-beta
 - **typeflows-core**: Further Claude support, tidying up Text file contents
 
