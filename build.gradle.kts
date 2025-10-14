@@ -12,6 +12,7 @@ repositories {
 dependencies {
     typeflowsApi(libs.typeflows.github)
     typeflowsApi(libs.typeflows.github.marketplace)
-    typeflowsApi(libs.typeflows.github.project.standards)
+    typeflowsApi(libs.typeflows.llm)
+    typeflowsApi(libs.typeflows.project.standards)
 }
 

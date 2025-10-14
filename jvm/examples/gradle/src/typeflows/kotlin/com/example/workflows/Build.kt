@@ -50,9 +50,12 @@ class Build : Builder<Workflow> {
 
             steps += SetupGradle()
 
-            steps += RunCommand("./gradlew check --info", "Build")
+            steps += RunCommand("./gradlew check --info") {
+                name = "Build"
+            }
 
-            steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
+            steps += UseAction("mikepenz/action-junit-report@v5.6.2") {
+                name = "Publish Test Report"
                 condition = always()
                 with["report_paths"] = "**/build/test-results/test/TEST-*.xml"
                 with["github_token"] = Secrets.string("GITHUB_TOKEN")
@@ -60,7 +63,8 @@ class Build : Builder<Workflow> {
                 with["update_check"] = "true"
             }
 
-            steps += RunScript("scripts/release-if-required.sh", "Release (if required)") {
+            steps += RunScript("scripts/release-if-required.sh") {
+                name = "Release (if required)"
                 id = "get-version"
                 condition = GitHub.ref.isEqualTo("refs/heads/main")
                 env["GH_TOKEN"] = Secrets.string("WORKFLOWS_TOKEN")

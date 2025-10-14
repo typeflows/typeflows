@@ -15,9 +15,12 @@ class RunMavenBuildAndReport : Builder<Action> {
             "GitHub token for authentication with the GitHub API"
         )
 
-        steps += RunCommand("mvn clean test", "Build and Test")
+        steps += RunCommand("mvn clean test") {
+            name = "Build and Test"
+        }
 
-        steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
+        steps += UseAction("mikepenz/action-junit-report@v5.6.2") {
+            name = "Publish Test Report";
             condition = always()
             with["report_paths"] = "**/target/surefire-reports/TEST-*.xml"
             with["github_token"] = $$"${{ inputs.github-token }}"

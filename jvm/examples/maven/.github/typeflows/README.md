@@ -12,7 +12,7 @@ flowchart LR
     workflowdispatch --> buildyml
     push -->|"branches(ignore: 1), paths(ignore: 1)"|buildyml
     push -->|"branches(only: 1), paths(only: 1)"|deployyml
-    pullrequest -->|"(*)"|buildyml
+    pullrequest -->|"(*), paths(ignore: 1)"|buildyml
     buildyml --> repositorydispatchgithubrepository
     repositorydispatchgithubrepository --> noreceiverrelease
 ```

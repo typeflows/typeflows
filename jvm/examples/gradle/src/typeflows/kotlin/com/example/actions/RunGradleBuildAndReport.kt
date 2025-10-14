@@ -16,9 +16,12 @@ class RunGradleBuildAndReport : Builder<Action> {
             "GitHub token for authentication with the GitHub API"
         )
 
-        steps += RunCommand("./gradlew check --info", "Build")
+        steps += RunCommand("./gradlew check --info") {
+            name = "Build"
+        }
 
-        steps += UseAction("mikepenz/action-junit-report@v5.6.2", "Publish Test Report") {
+        steps += UseAction("mikepenz/action-junit-report@v5.6.2") {
+            name = "Publish Test Report"
             condition = always()
             with["report_paths"] = "**/build/test-results/test/TEST-*.xml"
             with["github_token"] = Workflow.Inputs.string("github-token")

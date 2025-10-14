@@ -28,7 +28,7 @@ public class Deploy implements Builder<Workflow> {
             Job buildJob = Job.create("build", UBUNTU_LATEST, job -> {
                 job.steps.add(Checkout.create());
 
-                job.steps.add(UseAction.create("actions/setup-node@v4", "node", action -> {
+                job.steps.add(UseAction.create("actions/setup-node@v4", action -> {
                     action.with.put("node-version", "20");
                 }));
 
@@ -39,7 +39,7 @@ public class Deploy implements Builder<Workflow> {
 
             workflow.jobs.add(Job.create("deploy", UBUNTU_LATEST, job -> {
                 job.needs.add(buildJob);
-                job.steps.add(UseAction.create("actions/deploy@v2", "deploy", action -> {
+                job.steps.add(UseAction.create("actions/deploy@v2", action -> {
                     action.with.put("target", "production");
                     action.with.put("token", "${{ secrets.DEPLOY_TOKEN }}");
                 }));

@@ -11,4 +11,5 @@ version-catalog-update = { id = "nl.littlerobots.version-catalog-update", versio
 [libraries]
 typeflows-github = { module = "io.typeflows:typeflows-github", version.ref = "typeflows" }
 typeflows-github-marketplace = { module = "io.typeflows:typeflows-github-marketplace", version.ref = "typeflows" }
-typeflows-github-project-standards = { module = "io.typeflows:typeflows-project-standards", version.ref = "typeflows" }
+typeflows-project-standards = { module = "io.typeflows:typeflows-project-standards", version.ref = "typeflows" }
+typeflows-llm = { module = "io.typeflows:typeflows-llm", version.ref = "typeflows" }

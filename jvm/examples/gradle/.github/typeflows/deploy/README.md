@@ -28,7 +28,7 @@ flowchart TD
     action1["🎬 actions<br/>checkout"]
     style action1 fill:#e1f5fe,stroke:#0277bd
     step1 -.-> action1
-    step2["Step 2: node"]
+    step2["Step 2: Use setup-node"]
     style step2 fill:#f8f9fa,stroke:#495057
     action2["🎬 actions<br/>setup-node<br/><br/>📝 Inputs:<br/>• node-version: 20"]
     style action2 fill:#e1f5fe,stroke:#0277bd
@@ -61,7 +61,7 @@ flowchart TD
 ```mermaid
 %%{init: {"flowchart": {"curve": "basis"}}}%%
 flowchart TD
-    step1["Step 1: deploy"]
+    step1["Step 1: Use deploy"]
     style step1 fill:#f8f9fa,stroke:#495057
     action1["🎬 actions<br/>deploy<br/><br/>📝 Inputs:<br/>• target: production<br/>• token: ${{ secrets.DEPLOY_TOKEN }}"]
     style action1 fill:#e1f5fe,stroke:#0277bd
