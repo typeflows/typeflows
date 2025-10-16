@@ -47,11 +47,12 @@ class Build : Builder<Workflow> {
 
             steps += SetupJava(Adopt, V21)
 
-            steps += SetupGradle()
-
-            steps += RunCommand("./gradlew check --info") {
-                name = "Build"
+            steps += UseAction("stCarolas/setup-maven@v5") {
+                name = "Set up Maven"
+                with["maven-version"] = "3.9.9"
             }
+
+            steps += RunCommand("mvn test")
 
             steps += UseAction("mikepenz/action-junit-report@v5.6.2") {
                 name = "Publish Test Report"

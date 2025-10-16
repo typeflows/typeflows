@@ -3,8 +3,6 @@ name: Build
   workflow_dispatch: {
     }
   push:
-    branches-ignore:
-    - develop
     paths-ignore:
     - '**/.md'
   pull_request:
@@ -15,6 +13,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Build and release
     steps:
     - name: Checkout
       uses: actions/checkout@v5.0.0
