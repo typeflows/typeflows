@@ -35,27 +35,32 @@ class UpdateDependencies : Builder<Workflow> {
                 PullRequests to Write
             )
 
-            steps += Checkout("Checkout repository") {
+            steps += Checkout {
+                name = "Checkout repository"
                 token = Secrets.GITHUB_TOKEN.toString()
             }
 
-            steps += SetupJava(Temurin, V21, "Set up JDK")
+            steps += SetupJava(Temurin, V21)
 
             steps += SetupGradle()
 
-            steps += UseAction("stCarolas/setup-maven@v5", "Set up Maven") {
+            steps += UseAction("stCarolas/setup-maven@v5") {
+                name = "Set up Maven"
                 with["maven-version"] = "3.9.9"
             }
 
-            steps += RunCommand("./gradlew versionCatalogUpdate build", "Build (Root)")
-            steps += RunCommand(
-                "cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -",
-                "Build (JVM Gradle)"
-            )
+            steps += RunCommand("./gradlew versionCatalogUpdate build") {
+                name = "Build (Root)"
+            }
+            steps += RunCommand("cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -") {
+                name = "Build (JVM Gradle)"
+            }
+
             steps += RunCommand(
                 "cd jvm/examples/maven/typeflows && mvn versions:update-properties -DgenerateBackupPoms=false && mvn typeflows:export && cd -",
-                "Build (JVM Maven)"
-            )
+            ) {
+                name = "Build (JVM Maven)"
+            }
 
             steps += RunCommand(
                 $$"""
@@ -65,13 +70,14 @@ class UpdateDependencies : Builder<Workflow> {
                   echo "has_changes=true" >> $GITHUB_OUTPUT
                 fi
                 """.trimIndent(),
-                "Check for changes"
             ) {
+                name = "Check for changes"
                 id = "changes"
             }
 
-            steps += UseAction("peter-evans/create-pull-request@v6", "Create Pull Request") {
+            steps += UseAction("peter-evans/create-pull-request@v6") {
                 condition = StrExp.of("steps.changes.outputs.has_changes")
+                name = "Create Pull Request"
 
                 with += mapOf(
                     "token" to Secrets.GITHUB_TOKEN.toString(),

@@ -6,20 +6,22 @@ import io.typeflows.github.workflow.Job
 import io.typeflows.github.workflow.Permission.Contents
 import io.typeflows.github.workflow.PermissionLevel.Write
 import io.typeflows.github.workflow.Permissions
-import io.typeflows.github.workflow.RunsOn
+import io.typeflows.github.workflow.RunsOn.Companion.UBUNTU_LATEST
 import io.typeflows.github.workflow.Secrets
 import io.typeflows.github.workflow.StrExp
 import io.typeflows.github.workflow.Workflow
 import io.typeflows.github.workflow.step.RunCommand
 import io.typeflows.github.workflow.step.RunScript
+import io.typeflows.github.workflow.step.RunScript.Companion.invoke
 import io.typeflows.github.workflow.step.SendRepositoryDispatch
+import io.typeflows.github.workflow.step.SendRepositoryDispatch.Companion.invoke
 import io.typeflows.github.workflow.step.UseAction
+import io.typeflows.github.workflow.step.UseAction.Companion.invoke
 import io.typeflows.github.workflow.step.marketplace.Checkout
 import io.typeflows.github.workflow.step.marketplace.JavaDistribution.Adopt
-import io.typeflows.github.workflow.step.marketplace.JavaVersion
+import io.typeflows.github.workflow.step.marketplace.JavaVersion.V21
 import io.typeflows.github.workflow.step.marketplace.SetupGradle
 import io.typeflows.github.workflow.step.marketplace.SetupJava
-import io.typeflows.github.workflow.trigger.Branches
 import io.typeflows.github.workflow.trigger.Paths
 import io.typeflows.github.workflow.trigger.PullRequest
 import io.typeflows.github.workflow.trigger.Push
@@ -35,7 +37,6 @@ class Build : Builder<Workflow> {
         permissions = Permissions(Contents to Write)
 
         on += Push {
-            branches = Branches.Ignore("develop")
             paths = Paths.Ignore("**/.md")
         }
 
@@ -43,11 +44,10 @@ class Build : Builder<Workflow> {
             paths = Paths.Ignore("**/.md")
         }
 
-        jobs += Job("build", RunsOn.UBUNTU_LATEST) {
+        jobs += Job("build", UBUNTU_LATEST) {
+            name = "Build and release"
             steps += Checkout()
-
-            steps += SetupJava(Adopt, JavaVersion.V21)
-
+            steps += SetupJava(Adopt, V21)
             steps += SetupGradle()
 
             steps += RunCommand("./gradlew check --info") {

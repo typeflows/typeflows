@@ -1,0 +1,60 @@
+name: Build
+'on':
+  workflow_dispatch: {
+    }
+  push:
+    paths-ignore:
+    - '**/.md'
+  pull_request:
+    paths-ignore:
+    - '**/.md'
+permissions:
+  contents: write
+jobs:
+  build-root:
+    runs-on: ubuntu-latest
+    name: Build (Root)
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5.0.0
+    - name: Setup Java
+      uses: actions/setup-java@v5.0.0
+      with:
+        java-version: '21'
+        distribution: adopt
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4.4.2
+    - run: ./gradlew check
+      shell: bash
+  build-jvm-gradle:
+    runs-on: ubuntu-latest
+    name: Build (JVM Gradle)
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5.0.0
+    - name: Setup Java
+      uses: actions/setup-java@v5.0.0
+      with:
+        java-version: '21'
+        distribution: adopt
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4.4.2
+    - run: cd jvm/examples/gradle && ./gradlew check && cd -
+      shell: bash
+  build-jvm-maven:
+    runs-on: ubuntu-latest
+    name: Build (JVM Maven)
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5.0.0
+    - name: Setup Java
+      uses: actions/setup-java@v5.0.0
+      with:
+        java-version: '21'
+        distribution: adopt
+    - name: Set up Maven
+      uses: stCarolas/setup-maven@v5
+      with:
+        maven-version: 3.9.9
+    - run: cd jvm/examples/maven/typeflows && mvn build
+      shell: bash
