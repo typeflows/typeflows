@@ -28,7 +28,7 @@ flowchart TD
     action1["🎬 actions<br/>checkout<br/><br/>📝 Inputs:<br/>• token: ${{ secrets.GITHUB_TOKEN }}"]
     style action1 fill:#e1f5fe,stroke:#0277bd
     step1 -.-> action1
-    step2["Step 2: Set up JDK"]
+    step2["Step 2: Setup Java"]
     style step2 fill:#f8f9fa,stroke:#495057
     action2["🎬 actions<br/>setup-java<br/><br/>📝 Inputs:<br/>• java-version: 21<br/>• distribution: temurin"]
     style action2 fill:#e1f5fe,stroke:#0277bd

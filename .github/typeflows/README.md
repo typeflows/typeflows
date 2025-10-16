@@ -2,13 +2,20 @@
 
 ```mermaid
 flowchart LR
-    schedule(["⏰ schedule"])
     workflowdispatch(["👤 workflow_dispatch"])
+    push(["📤 push"])
+    pullrequest(["🔀 pull_request"])
+    schedule(["⏰ schedule"])
+    buildyml["Build"]
     updatedependenciesyml["Update Dependencies"]
-    schedule -->|"0 12 * * *"|updatedependenciesyml
+    workflowdispatch --> buildyml
     workflowdispatch --> updatedependenciesyml
+    push -->|"paths(ignore: 1)"|buildyml
+    pullrequest -->|"(*), paths(ignore: 1)"|buildyml
+    schedule -->|"0 12 * * *"|updatedependenciesyml
 ```
 
 ## Workflows
 
+- [Build](./build/)
 - [Update Dependencies](./update-dependencies/)
