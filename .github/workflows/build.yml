@@ -56,5 +56,5 @@ jobs:
       uses: stCarolas/setup-maven@v5
       with:
         maven-version: 3.9.9
-    - run: cd jvm/examples/maven/typeflows && mvn build
+    - run: cd jvm/examples/maven/typeflows && mvn test
       shell: bash

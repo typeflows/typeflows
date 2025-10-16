@@ -60,7 +60,7 @@ class Build : Builder<Workflow> {
                 with["maven-version"] = "3.9.9"
             }
 
-            steps += RunCommand("cd jvm/examples/maven/typeflows && mvn build")
+            steps += RunCommand("cd jvm/examples/maven/typeflows && mvn test")
         }
 
         jobs += listOfNotNull(buildRoot, buildJvmGradle, buildJvmMaven)
