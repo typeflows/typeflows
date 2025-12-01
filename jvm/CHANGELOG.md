@@ -6,6 +6,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 0.32.0-beta
+- **typeflows-github**: Tidying up of exported YAML files, to solve wrapping and inappropriate quoting.
+- **typeflows-llm**: Support for Claude Skills.
+- **typeflows-experiment**: Added consistent experiment recording in the user's `.typeflows` folder.
+
 ### 0.31.0-beta
 - **typeflows-experiment**: [New module] Add Multivariate testing to your Typeflows generation. Perfect for A/B testing LLM instruction files
 
