@@ -1,7 +1,6 @@
 name: Build
-'on':
-  workflow_dispatch: {
-    }
+on:
+  workflow_dispatch:
   push:
     branches-ignore:
     - develop
@@ -48,8 +47,7 @@ jobs:
         GH_TOKEN: ${{ secrets.WORKFLOWS_TOKEN }}
       shell: bash
     - name: Repository Dispatch
-      if: (github.ref == 'refs/heads/main' && steps.get-version.outputs.tag-created
-        == 'true')
+      if: (github.ref == 'refs/heads/main' && steps.get-version.outputs.tag-created == 'true')
       run: |-
         curl -L \
           -X POST \
