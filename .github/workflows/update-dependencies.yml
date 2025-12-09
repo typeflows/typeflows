@@ -1,9 +1,8 @@
 name: Update Dependencies
-'on':
+on:
   schedule:
   - cron: 0 12 * * *
-  workflow_dispatch: {
-    }
+  workflow_dispatch:
 jobs:
   update-dependencies:
     runs-on: ubuntu-latest
@@ -22,7 +21,7 @@ jobs:
         java-version: '21'
         distribution: temurin
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v4.4.2
+      uses: gradle/actions/setup-gradle@v5.0.0
     - name: Set up Maven
       uses: stCarolas/setup-maven@v5
       with:
@@ -34,8 +33,7 @@ jobs:
       run: cd jvm/examples/gradle && ./gradlew versionCatalogUpdate build && cd -
       shell: bash
     - name: Build (JVM Maven)
-      run: cd jvm/examples/maven/typeflows && mvn versions:update-properties -DgenerateBackupPoms=false
-        && mvn typeflows:export && cd -
+      run: cd jvm/examples/maven/typeflows && mvn versions:update-properties -DgenerateBackupPoms=false && mvn typeflows:export && cd -
       shell: bash
     - name: Check for changes
       id: changes
