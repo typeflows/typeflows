@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### 0.34.0-beta
+- **typeflows-github-marketplace**: Update actions to latest versions.
+- **typeflows-github-marketplace**: Ability to pin version numbers for actions.
+
 ### 0.33.0-beta
 - **typeflows-***: Fix bug with closing of FileSystem for resource files.
 - **typeflows-github-marketplace**: Update actions to latest versions.
