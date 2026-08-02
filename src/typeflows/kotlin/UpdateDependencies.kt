@@ -75,7 +75,7 @@ class UpdateDependencies : Builder<Workflow> {
                 id = "changes"
             }
 
-            steps += UseAction("peter-evans/create-pull-request@v6") {
+            steps += UseAction("peter-evans/create-pull-request@v7") {
                 condition = StrExp.of("steps.changes.outputs.has_changes")
                 name = "Create Pull Request"
 
